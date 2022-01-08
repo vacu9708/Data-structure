@@ -1,9 +1,6 @@
 Queue : First In First Out
 -----circular queue(순환 큐)(array에선 deQ마다 모든 원소를 앞으로 당겨야하기 때문에 linear queue를 쓸 수 없다)
-
 ~~~C++
-~~~
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -39,5 +36,4 @@ void main() {
 		cout << deQ() << "\n";
 		cout << deQ() << "\n"; // 비어있어서 못 뺌
 }
-
 ~~~
