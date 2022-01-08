@@ -1,0 +1,108 @@
+// -----C++ implementation of operations on Trie
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int ALPHABET_SIZE = 26; // = 67 to include uppercase letters
+
+struct TrieNode {
+	TrieNode* children[ALPHABET_SIZE] = { NULL, };
+	string data = "";
+};
+
+void insert(TrieNode* root, string key) {
+	TrieNode* crawl = root;
+	for (int i = 0; i < key.length(); i++) { // Crawl trie
+		int index = key[i] - 'a'; // To index
+		if (crawl->children[index] == false) // If the pointer doesn't have address, that is, if it's not allocated (if the character doesn't exist)
+			crawl->children[index] = new TrieNode;
+		crawl = crawl->children[index]; // Move crawler
+	}
+	crawl->data = key; // Save data
+}
+
+void delete_word(TrieNode* root, string target) {
+	TrieNode* prev = 0;
+	int index = 0;
+	for (int i = 0; i < target.length(); i++) { // Crawl trie
+		TrieNode* crawl = root;
+		for (int j = 0; j < target.length() - i; j++) {
+			index = target[j] - 'a';
+			if (crawl->children[index]) {
+				prev = crawl;
+				crawl = crawl->children[index];
+			}
+		}
+		for (int j = 0; j < 26; j++) // Check if the node has a child
+			if (crawl->children[j] && crawl->data == target) {
+				crawl->data = ""; // Only delete data without deallocation
+				return;
+			}
+		if (crawl->data != "" && crawl->data != target) {
+			return;
+		}
+		delete crawl;
+		prev->children[index] = NULL;
+	}
+}
+
+void delete_word_simple(TrieNode* root, string target) {
+	TrieNode* crawl = root;
+	for (int i = 0; i < target.length(); i++) {
+		int index = target[i] - 'a';
+		if (crawl->children[index])
+			crawl = crawl->children[index];
+	}
+	if (crawl->data == target)
+		crawl->data = "";
+}
+
+
+void match_whole_word_search(TrieNode* root, string target) {
+	TrieNode* crawl = root;
+	for (int i = 0; i < target.length(); i++) {
+		int index = target[i] - 'a';
+		if (crawl->children[index])
+			crawl = crawl->children[index];
+	}
+	if (crawl->data != "" && crawl->data == target) // If target was found
+		cout << "*" << crawl->data << "*" << endl;
+	else
+		cout << "Not found" << endl;
+}
+
+void DFS(TrieNode* crawl) {
+	if (crawl->data != "")
+		cout << "*" << crawl->data << "*" << endl;
+	for (int i = 0; i < ALPHABET_SIZE; i++) {
+		if (crawl->children[i]) {
+			DFS(crawl->children[i]);
+		}
+	}
+}
+
+void partial_string_search(TrieNode* root, string key) {
+	TrieNode* crawl = root;
+	for (int i = 0; i < key.length(); i++) {
+		int index = key[i] - 'a';
+		if (crawl->children[index])
+			crawl = crawl->children[index];
+	}
+	DFS(crawl);
+}
+
+int main() {
+	// Input keys (use only 'a' through 'z' and lower case)
+	string keys[] = { "the", "there", "though", "answer", "any" };
+
+	// Construct trie
+	TrieNode* root = new TrieNode;
+	for (string i : keys)
+		insert(root, i);
+
+	match_whole_word_search(root, "the");
+	match_whole_word_search(root, "th");
+	partial_string_search(root, "the");
+	delete_word(root, "there");
+	match_whole_word_search(root, "there");
+}
