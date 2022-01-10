@@ -1,6 +1,8 @@
 # Queue
 **Queue** : First In First Out
 
+![image-91](https://user-images.githubusercontent.com/67142421/148844843-6b484f8d-87a2-4657-bdce-d7589ec942d7.png)
+
 ## Linked queue
 ~~~C++
 #include <iostream>
