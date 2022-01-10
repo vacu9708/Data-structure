@@ -1,6 +1,7 @@
-# (Circular) queue
+# Queue
 **Queue** : First In First Out
 
+## Circular queue
 ~~~C++
 // Circular queue
 #include <iostream>
@@ -43,6 +44,7 @@ void main() {
 ## Result
 ![Untitled](https://user-images.githubusercontent.com/67142421/148781335-6733cb27-860c-44ba-b39a-5f480d82d9a4.png)
 
+## Linked queue
 ~~~C++
 #include <iostream>
 
