@@ -1,10 +1,11 @@
-Queue : First In First Out
------circular queue(순환 큐)(array에선 deQ마다 모든 원소를 앞으로 당겨야하기 때문에 linear queue를 쓸 수 없다)
+**Queue** : First In First Out
+
 ~~~C++
 #include <iostream>
 #include <string>
 using namespace std;
-#define QUEUE_LENGTH 3
+
+const char QUEUE_LENGTH = 4;
 
 int queue[QUEUE_LENGTH] = { 0, };
 int front = 0, rear = 0;
@@ -13,7 +14,7 @@ void enQ(int data) {
 	if ((rear + 1) % QUEUE_LENGTH == front)
 		cout << "The queue is full\n";
 	else {
-		rear = (rear + 1) % QUEUE_LENGTH; // 마지막 index면 index 0으로 돌아가고, 아니면 index++
+		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, or else index++
 		cout << "Enqueue (" << data << ")\n";
 		queue[rear] = data;
 	}
@@ -29,11 +30,13 @@ string deQ() {
 }
 
 void main() {
-		enQ(0);
-		enQ(1);
-		enQ(2); // 꽉 차서 못 넣음
-		cout << deQ() << "\n";
-		cout << deQ() << "\n";
-		cout << deQ() << "\n"; // 비어있어서 못 뺌
+	enQ(0);
+	enQ(1);
+	enQ(2);
+	enQ(3); // Can't put in more elements because the queue is full
+	
+	for (int i = 0; i < 4; i++)
+		cout << "Dequeue : " << deQ() << "\n";
 }
 ~~~
+![Untitled](https://user-images.githubusercontent.com/67142421/148781335-6733cb27-860c-44ba-b39a-5f480d82d9a4.png)
