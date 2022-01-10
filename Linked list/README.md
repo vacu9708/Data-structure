@@ -59,10 +59,135 @@ public:
 	void insert(int index, int data) {
 		Node* cralwer = front, * prev_cralwer = NULL;
 
-		if (front == NULL) {
-			printf("Can't insert : empty list");
+		for (int i = 0; i < index; i++) { // Go to the node to insert
+			prev_cralwer = cralwer;
+			cralwer = cralwer->next;
+		}
+
+		if (cralwer == front) { // When inserting at front
+			front = new_node(data);
+			front->next = cralwer;
+		}
+		else {
+			prev_cralwer->next = new_node(data);
+			prev_cralwer->next->next = cralwer;
+		}
+	}
+
+	void delete_node(int index) {
+		Node* cralwer = front, * prev_cralwer = NULL;
+
+		for (int i = 0; i < index; i++) { // Go to the node to delete
+			prev_cralwer = cralwer;
+			cralwer = cralwer->next;
+		}
+
+		if (cralwer == front) { // When deleting front
+			front = front->next;
+			delete cralwer;
+		}
+		else {
+			prev_cralwer->next = cralwer->next;
+			delete cralwer;
+		}
+	}
+
+	string at(int index) {
+		Node* cralwer = front; // Put the address of front into cralwer
+
+		for (int i = 0; i < index; i++) { // Go to the node to index
+			cralwer = cralwer->next;
+		}
+
+		return to_string(cralwer->data);
+	}
+
+	int back() {
+		return rear->data;
+	}
+
+	void print_list() {
+		Node* cralwer = front;
+		while (cralwer != NULL) {
+			cout << cralwer->data << " ";
+			cralwer = cralwer->next;
+		}
+		cout << "\n";
+	}
+};
+
+int main(void) {
+	my_SLL list1;
+
+	for (int i = 0; i <= 3; i++)
+		list1.push_back(i);
+	for (int i = 4; i <= 7; i++)
+		list1.push_front(i);
+
+	printf("Printing list : "); list1.print_list();
+
+	short index_to_delete = 1;
+	list1.delete_node(index_to_delete);
+	printf("After deleting index (%d) : ", index_to_delete); list1.print_list();
+
+	short index_to_insert = 1;
+	list1.insert(index_to_insert, 9);
+	printf("After deleting index (%d) : ", index_to_insert); list1.print_list();
+
+	cout << list1.at(0) << "\n";
+	cout << list1.back() << "\n";
+}
+~~~
+
+## Result
+![Untitled](https://user-images.githubusercontent.com/67142421/148810452-62986203-1c65-4737-94f0-0f9a6020fb0e.png)
+
+## Exceptions handled
+~~~C++
+#include <iostream>
+#include <string>
+using namespace std;
+
+class my_SLL {
+public:
+	class Node {
+	public:
+		int data;
+		Node* next = NULL;
+	};
+
+	Node* front = 0;
+	Node* rear = 0;
+
+	Node* new_node(int data) {
+		Node* node = new Node;
+		node->data = data;
+		return node;
+	}
+
+	void push_front(int data) {
+		if (front == NULL) { // If there are no nodes
+			front = rear = new_node(data);
 			return;
 		}
+
+		Node* prev_front = front;
+		front = new_node(data);
+		front->next = prev_front;
+	}
+
+	void push_back(int data) {
+		if (front == NULL) { // If there are no nodes
+			front = rear = new_node(data);
+			return;
+		}
+
+		rear->next = new_node(data);
+		rear = rear->next;
+	}
+
+	void insert(int index, int data) {
+		Node* cralwer = front, * prev_cralwer = NULL;
 
 		for (int i = 0; i < index; i++) { // Go to the node to insert
 			prev_cralwer = cralwer;
@@ -119,10 +244,10 @@ public:
 			return "Can't get the data : empty list";
 
 		for (int i = 0; i < index; i++) { // Go to the node to index
-			cralwer = cralwer->next;
-
-			if (cralwer == NULL)
+			if (cralwer->next == NULL)
 				return "Can't get the data : out of range";
+
+			cralwer = cralwer->next;		
 		}
 
 		return to_string(cralwer->data);
@@ -169,6 +294,4 @@ int main(void) {
 	cout << list1.back() << "\n";
 }
 ~~~
-
-## Result
 ![Untitled](https://user-images.githubusercontent.com/67142421/148794108-cc2cb13a-ee86-4521-81ba-6f2e36a620af.png)
