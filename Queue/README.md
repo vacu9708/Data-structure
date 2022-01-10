@@ -63,7 +63,7 @@ public:
 Node* front, * rear;
 
 void put(int data) {
-	if (front == NULL) {
+	if (front == NULL) { // If the queue is empty, create front
 		printf("Put (%d)\n", data);
 		front = new Node(data);
 		rear = front;
@@ -76,15 +76,16 @@ void put(int data) {
 }
 
 void get() {
-	if (front == NULL) {
+	if (front == NULL) { // If the queue is empty
 		printf("The queue is empty\n");
 		return;
 	}
-
+	
+	// Store previous front
 	Node* prev_front = front;
 	int data = prev_front->data;
+	//-----
 	front = front->next;
-
 	delete prev_front;
 	printf("Get (%d)\n", data);
 }
