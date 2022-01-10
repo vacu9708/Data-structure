@@ -72,7 +72,7 @@ void put(int data) {
 	if ((rear + 1) % QUEUE_LENGTH == front)
 		printf("The queue is full\n");
 	else {
-		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, or else index++
+		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 		printf("Put (%d)\n", data);
 		queue[rear] = data;
 	}
