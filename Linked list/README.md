@@ -93,13 +93,13 @@ public:
 		}
 
 		for (int i = 0; i < index; i++) { // Go to the node to delete
-			prev_cralwer = cralwer;
-			cralwer = cralwer->next;
-
-			if (cralwer == NULL) {
+			if (cralwer->next == NULL) {
 				printf("Can't delete : out of range\n");
 				return;
 			}
+		
+			prev_cralwer = cralwer;
+			cralwer = cralwer->next;
 		}
 
 		if (cralwer == front) { // When deleting front
