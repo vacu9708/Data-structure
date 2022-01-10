@@ -1,5 +1,8 @@
 # Stack
-Stack : Last In First Out (undo)
+Stack : Last In First Out
+
+![stack-660x345](https://user-images.githubusercontent.com/67142421/148844511-1d9a04c3-cb47-4609-b94e-1a9a27723e4f.png)
+
 ~~~C++
 #include <iostream>
 #include <string>
