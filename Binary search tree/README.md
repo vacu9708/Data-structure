@@ -142,7 +142,7 @@ string search(int target) {
 	Node* pointer = root;
 	while (pointer != NULL) {
 		if (target == pointer->data)
-			return "*" + to_string(pointer->data) + "* found\n";
+			return "(" + to_string(pointer->data) + ") found\n";
 		else if (target < pointer->data) // If target is smaller than parent
 			pointer = pointer->left;
 		else
