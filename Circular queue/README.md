@@ -1,6 +1,8 @@
+# Queue
 **Queue** : First In First Out
 
 ~~~C++
+// Circular queue
 #include <iostream>
 #include <string>
 using namespace std;
