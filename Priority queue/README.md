@@ -36,11 +36,10 @@ void insert(vector<int>& heap_tree, int newNum) { // Function to insert an eleme
         heapify(heap_tree, i);
 }
 
-// Function to delete an element from the tree
-void deleteNode(vector<int>& heap_tree, int target) {
+void deleteNode(vector<int>& heap_tree, int target) { // Function to delete an element from the tree
     int size = heap_tree.size();
     for (int i = 0; i < size; i++)
-        if (heap_tree[i] == target) { // If the target was found
+        if (heap_tree[i] == target) { // If target was found
             printf("Delete (%d)\n", target);
             heap_tree[i] = heap_tree[size - 1]; // Change it to the last node
             heap_tree.pop_back(); // Delete the last node
@@ -89,6 +88,7 @@ int main() {
 ## Priority queue using linked list
 ~~~C++
 #include <iostream>
+
 using namespace std;
 
 class Node {
@@ -97,18 +97,18 @@ public:
 	Node* next;
 };
 
-Node* head = 0;
+Node* front;
 void insert_in_order(int data) { // In descending order
 	Node* new_node = new Node;
 	new_node->data = data;
 	new_node->next = 0;
 
-	if (head == 0) { // When there are no nodes
-		head = new_node;
+	if (front == 0) { // When there are no nodes
+		front = new_node;
 		return;
 	}
 
-	Node* crawler = head;
+	Node* crawler = front;
 	Node* prev = 0;
 
 	while (crawler->next != 0 && data < crawler->data) { // Search until the new data is bigger
@@ -116,10 +116,10 @@ void insert_in_order(int data) { // In descending order
 		crawler = crawler->next;
 	}
 
-	if (crawler == head || crawler->next == 0) { // If the crawler is at head or rear
+	if (crawler == front || crawler->next == 0) { // If the crawler is at front or rear
 		if (data > crawler->data) { // If the new data is bigger
 			new_node->next = crawler; // Put new node on the left of cralwer
-			head = new_node;
+			front = new_node;
 		}
 		else // If the new data is smaller
 			crawler->next = new_node; // Put new node on the right of cralwer
@@ -130,16 +130,52 @@ void insert_in_order(int data) { // In descending order
 	new_node->next = crawler;
 }
 
-int get() {
-	int first_data = head->data;
-	Node* node_to_remove = head;
-	head = head->next;
+void get() {
+	if (front == NULL) {
+		printf("Can't get : Empty list\n");
+		return;
+	}
+
+	int highest_priority = front->data;
+	Node* node_to_remove = front;
+	front = front->next;
 	delete node_to_remove;
-	return first_data;
+	printf("Get (%d)\n", highest_priority);
+}
+
+void delete_node(int target) {
+	Node* crawler = front, * prev_crawler = NULL;
+
+	if (front == NULL) {
+		printf("Can't delete : empty list");
+		return;
+	}
+
+	while(true){
+		if (crawler->data == target)
+			break;
+
+		if (crawler->next == NULL) {
+			printf("Can't delete : out of range\n");
+			return;
+		}
+
+		prev_crawler = crawler;
+		crawler = crawler->next;
+	}
+
+	if (crawler == front) { // When deleting front
+		front = front->next;
+		delete crawler;
+	}
+	else {
+		prev_crawler->next = crawler->next;
+		delete crawler;
+	}
 }
 
 void print_list() {
-	Node* crawler = head;
+	Node* crawler = front;
 	while (crawler != 0) {
 		cout << crawler->data << " ";
 		crawler = crawler->next;
@@ -155,10 +191,13 @@ int main(void) {
 	insert_in_order(6);
 	printf("Print list : "); print_list();
 
+	short data_to_delete = 5;
+	printf("Delete (%d)\n", data_to_delete); delete_node(data_to_delete);
+
 	for (int i = 0; i < 5; i++)
-		printf("Get (%d)\n", get());
+		get();
 }
 ~~~
 ## Result
-![Untitled](https://user-images.githubusercontent.com/67142421/148802846-f311382e-9a1f-4724-bba5-734dd38000e2.png)
+![Untitled](https://user-images.githubusercontent.com/67142421/148807940-c75376d9-519d-46db-b6ec-ec8eff25fad8.png)
 
