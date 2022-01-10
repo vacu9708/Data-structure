@@ -15,7 +15,6 @@ A linked list is a linear container of data elements whose order is not given by
 
 ~~~C++
 #include <iostream>
-#include <string>
 using namespace std;
 
 class my_SLL {
@@ -92,14 +91,14 @@ public:
 		}
 	}
 
-	string at(int index) {
+	int at(int index) {
 		Node* cralwer = front; // Put the address of front into cralwer
 
 		for (int i = 0; i < index; i++) { // Go to the node to index
 			cralwer = cralwer->next;
 		}
 
-		return to_string(cralwer->data);
+		return cralwer->data;
 	}
 
 	int back() {
