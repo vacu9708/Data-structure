@@ -1,6 +1,60 @@
 # Queue
 **Queue** : First In First Out
 
+## Linked queue
+~~~C++
+#include <iostream>
+
+using namespace std;
+
+class Node {
+public:
+	Node* next;
+	int data;
+
+	Node(int data) {
+		this->data = data;
+	}
+};
+
+Node* front, * rear;
+
+void put(int data) {
+	if (front == NULL) { // If the queue is empty, create front
+		printf("Put (%d)\n", data);
+		front = new Node(data);
+		rear = front;
+		return;
+	}
+
+	printf("Put (%d)\n", data);
+	rear->next = new Node(data);
+	rear = rear->next;
+}
+
+int get() {	
+	// Store previous front
+	Node* prev_front = front;
+	int data = prev_front->data;
+	//-----
+	front = front->next;
+	delete prev_front;
+	return data;
+}
+
+void main() {
+	put(0);
+	put(1);
+	put(2);
+
+	printf("\n");
+	for (int i = 0; i < 3; i++)
+		printf("Get (%d)", get());
+}
+~~~
+## Result
+![Untitled](https://user-images.githubusercontent.com/67142421/148811614-83fe5009-8aa2-4657-9116-df5999a4fcda.png)
+
 ## Circular queue
 ~~~C++
 // Circular queue
@@ -43,63 +97,3 @@ void main() {
 ~~~
 ## Result
 ![Untitled](https://user-images.githubusercontent.com/67142421/148781335-6733cb27-860c-44ba-b39a-5f480d82d9a4.png)
-
-## Linked queue
-~~~C++
-#include <iostream>
-
-using namespace std;
-
-class Node {
-public:
-	Node* next;
-	int data;
-
-	Node(int data) {
-		this->data = data;
-	}
-};
-
-Node* front, * rear;
-
-void put(int data) {
-	if (front == NULL) { // If the queue is empty, create front
-		printf("Put (%d)\n", data);
-		front = new Node(data);
-		rear = front;
-		return;
-	}
-
-	printf("Put (%d)\n", data);
-	rear->next = new Node(data);
-	rear = rear->next;
-}
-
-void get() {
-	if (front == NULL) { // If the queue is empty
-		printf("The queue is empty\n");
-		return;
-	}
-	
-	// Store previous front
-	Node* prev_front = front;
-	int data = prev_front->data;
-	//-----
-	front = front->next;
-	delete prev_front;
-	printf("Get (%d)\n", data);
-}
-
-void main() {
-	put(0);
-	put(1);
-	put(2);
-
-	printf("\n");
-	for (int i = 0; i < 4; i++)
-		get();
-}
-~~~
-## Result
-![Untitled](https://user-images.githubusercontent.com/67142421/148788540-176bc3ed-4744-4f07-8911-c082ee9c83d7.png)
-
