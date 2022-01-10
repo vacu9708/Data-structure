@@ -130,35 +130,20 @@ void insert_in_order(int data) { // In descending order
 	new_node->next = crawler;
 }
 
-void get() {
-	if (front == NULL) {
-		printf("Can't get : Empty list\n");
-		return;
-	}
-
+int get() {
 	int highest_priority = front->data;
 	Node* node_to_remove = front;
 	front = front->next;
 	delete node_to_remove;
-	printf("Get (%d)\n", highest_priority);
+	return highest_priority;
 }
 
 void delete_node(int target) {
 	Node* crawler = front, * prev_crawler = NULL;
 
-	if (front == NULL) {
-		printf("Can't delete : empty list");
-		return;
-	}
-
-	while(true){
+	while (true) {
 		if (crawler->data == target)
 			break;
-
-		if (crawler->next == NULL) {
-			printf("Can't delete : out of range\n");
-			return;
-		}
 
 		prev_crawler = crawler;
 		crawler = crawler->next;
@@ -194,10 +179,10 @@ int main(void) {
 	short data_to_delete = 5;
 	printf("Delete (%d)\n", data_to_delete); delete_node(data_to_delete);
 
-	for (int i = 0; i < 5; i++)
-		get();
+	for (int i = 0; i < 4; i++)
+		printf("Get (%d)\n", get());
 }
 ~~~
 ## Result
-![Untitled](https://user-images.githubusercontent.com/67142421/148807940-c75376d9-519d-46db-b6ec-ec8eff25fad8.png)
+![Untitled](https://user-images.githubusercontent.com/67142421/148811152-0abb0d7b-68ea-4e46-b16b-04a0d3fd97cf.png)
 
