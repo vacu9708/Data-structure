@@ -36,19 +36,6 @@ void insert(vector<int>& heap_tree, int newNum) { // Function to insert an eleme
         heapify(heap_tree, i);
 }
 
-void deleteNode(vector<int>& heap_tree, int target) { // Function to delete an element from the tree
-    int size = heap_tree.size();
-    for (int i = 0; i < size; i++)
-        if (heap_tree[i] == target) { // If target was found
-            printf("Delete (%d)\n", target);
-            heap_tree[i] = heap_tree[size - 1]; // Change it to the last node
-            heap_tree.pop_back(); // Delete the last node
-            for (int i = size / 2 - 1; i >= 0; i--) // Max-heapify
-                heapify(heap_tree, i);
-            break;
-        }
-}
-
 int get(vector<int>& heap_tree) {
     int highest_priority = heap_tree[0];
 
@@ -60,6 +47,19 @@ int get(vector<int>& heap_tree) {
     for (int i = size / 2 - 1; i >= 0; i--) // Max-heapify
         heapify(heap_tree, i);
     return highest_priority;
+}
+
+void deleteNode(vector<int>& heap_tree, int target) { // Function to delete an element from the tree
+    int size = heap_tree.size();
+    for (int i = 0; i < size; i++)
+        if (heap_tree[i] == target) { // If target was found
+            printf("Delete (%d)\n", target);
+            heap_tree[i] = heap_tree[size - 1]; // Change it to the last node
+            heap_tree.pop_back(); // Delete the last node
+            for (int i = size / 2 - 1; i >= 0; i--) // Max-heapify
+                heapify(heap_tree, i);
+            break;
+        }
 }
 
 void print_list(vector<int>& heap_tree) {
