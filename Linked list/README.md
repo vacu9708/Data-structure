@@ -11,7 +11,7 @@ A linked list is a linear container of data elements whose order is not given by
 * **Linked list**
   * A collection of data elements that is stored randomly and in which each element is connected using pointers
   * Elements can't be accessed randomly. They have to be accessed sequentially in order. **O(n) time complexity** in the worst case which is going through the list to access the last element sequentially.
-  * Insertion and Deletion operations are fast since a new node can be connected to the list anywhere in memory and a node can be easily deleted by just changing the link using pointers
+  * Insertion and Deletion operations are fast since a new node can be connected to the list anywhere in memory and a node can be easily deleted by just changing the link using pointers. **O(1) time complexity**
 
 ~~~C++
 #include <iostream>
