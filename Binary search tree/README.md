@@ -1,11 +1,8 @@
 # Binary search tree
+Binary search tree : A binary tree where the left child of a parent is smaller than the parent and the right child is bigger than the parent.
 
 ~~~C++
-//Binary search tree : parent의 왼쪽 child는 parent보다 작고, 오른쪽 child는 parent보다 큰 binary tree
-//inOrder, preOrder, postOrder traversal
-//-----Code
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct Node {
@@ -32,134 +29,172 @@ Node* insert_recursion(Node* node, int data) {
 }
 
 void insert(int data) {
-	if (root == NULL) { // If there isn't root
+	if (root == NULL) { // If there isn't a root, make a root
 		root = new_node(data);
 		return;
 	}
 
 	Node* pointer = root;
 	while (true)
-		if (data < pointer->data) // Smaller than parent?
-			if (pointer->left == NULL) { // If there isn't left child
+		// If smaller than parent, work on the left child
+		if (data < pointer->data)
+			if (pointer->left == NULL) { // If the parent has a left child, insert in the left child
 				pointer->left = new_node(data);
 				return;
 			}
-			else // If there's left child
+			else // If the parent has a left child, go to the left child to get to the destination
 				pointer = pointer->left;
+	//-----
+	// If not smaller than parent, work on the right child
 		else
-			if (pointer->right == NULL) {
+			if (pointer->right == NULL) { // If the parent doesn't have a right child, insert in the right child
 				pointer->right = new_node(data);
 				return;
 			}
-			else
+			else // If the parent has a right child, go to the right child to get to the destination
 				pointer = pointer->right;
+	//-----
 }
 
 Node* minNode(Node* node) {
-	Node* pointer = node;
-	while (pointer && pointer->left != NULL) // Find the leftmost leaf
-		pointer = pointer->left;
-	return pointer;
+	Node* crawler = node;
+	while (crawler && crawler->left != NULL) // Find the leftmost leaf to get to the minimum node
+		crawler = crawler->left;
+	return crawler;
 }
 
-Node* delete_recursion(Node* node, int target) {
-	if (node == NULL) // To prevent read violation and trash address
-		return node;
-
-	// Find the node to be deleted
-	if (target == node->data) { // If target was found
-		// If the node is with only one child or no child
-		if (node->left == NULL) {
-			Node* temp = node->right;
-			delete node;
-			return temp;
-		}
-		else if (node->right == NULL) {
-			Node* temp = node->left;
-			delete node;
-			return temp;
-		}
-		// If the node has two children
-		Node* temp = minNode(node->right); // Minimum of right subtree
-		node->data = temp->data; // Place the minimum of right subtree in position of the node to be deleted
-		node->right = delete_recursion(node->right, temp->data);
+Node* delete_node(Node* crawler, int target) { // Does the same function as delete_node() below
+	if (crawler == NULL) {
+		cout << "Not found\n";
+		return crawler; // To prevent read violation and trash address, instead put NULL address
 	}
-	else if (target < node->data)
-		node->left = delete_recursion(node->left, target);
-	else
-		node->right = delete_recursion(node->right, target);
-	return node; // In order not to put a trash address
+
+	if (target == crawler->data) { // If target was found
+		// If the node has only one child or no child
+		if (crawler->left == NULL) {
+			Node* temp = crawler->right; // Store the right child of target node to substitute the target node with it
+			delete crawler;
+			return temp;
+		}
+		else if (crawler->right == NULL) { // Same process as right above
+			Node* temp = crawler->left;
+			delete crawler;
+			return temp;
+		}
+		//-----
+		// Else if the target has two children
+		Node* temp = minNode(crawler->right); // Find the minimum of right subtree
+		crawler->data = temp->data; // Place the minimum of right subtree in the position of the node to be deleted
+		crawler->right = delete_node(crawler->right, temp->data); // Delete the minimum of right subtree
+		//-----
+	}
+	else if (target < crawler->data) // If target is smaller than parent, go to left child to find the target
+		crawler->left = delete_node(crawler->left, target);
+	else // Else, same process as right above
+		crawler->right = delete_node(crawler->right, target);
+	return crawler; // In order not to put a trash address in DFS
 }
 
-void deleteNode(Node* root, int target) {
-	Node* pointer = root, * prev = root;
+void delete_node2(Node* crawler, int target) { // Does the same function as delete_node2() above
+	Node* prev = crawler;
 	bool prev_left = false;
-	while (pointer) {
-		if (target == pointer->data) { // If target was found
+	while (crawler != NULL) {
+		if (target == crawler->data) { // If target was found
 			// If the node is with only one child or no child
-			if (pointer->left == NULL) {
-				Node* temp = pointer->right;
-				delete pointer;
+			if (crawler->left == NULL) {
+				Node* temp = crawler->right; // Store the right child of target node to substitute the target node with it
+				delete crawler;
 				prev_left == true ? prev->left = temp : prev->right = temp;
 				return;
 			}
-			else if (pointer->right == NULL) {
-				Node* temp = pointer->left;
-				delete pointer;
+			else if (crawler->right == NULL) { // Same process as right above
+				Node* temp = crawler->left;
+				delete crawler;
 				prev_left == true ? prev->left = temp : prev->right = temp;
 				return;
 			}
+			//-----
 			// If the node has two children
-			Node* temp = minNode(pointer->right); // Minimum of right subtree
-			pointer->data = temp->data; // Place the minimum of right subtree in position of the node to be deleted
-			deleteNode(pointer->right, temp->data);
+			Node* temp = minNode(crawler->right); // Find the minimum of right subtree
+			crawler->data = temp->data; // Place the minimum of right subtree in the position of the node to be deleted
+			delete_node2(crawler->right, temp->data);
 			return;
+			//-----
 		}
-		else if (target < pointer->data) {// If target is smaller than parent
-			prev = pointer;
-			pointer = pointer->left;
+		// If target is smaller than parent, go to left child to find the target
+		else if (target < crawler->data) {
+			prev = crawler;
+			crawler = crawler->left;
 			prev_left = true;
 		}
+		//-----
+		// Else, same process as right above
 		else {
-			prev = pointer;
-			pointer = pointer->right;
+			prev = crawler;
+			crawler = crawler->right;
 			prev_left = false;
 		}
+		//-----
 	}
 	cout << "Not found\n";
 }
 
-// Inorder traversal
-void inOrder(Node* node) {
-	if (node != NULL) {
-		inOrder(node->left); // Traverse left
-		cout << node->data << " -> "; // Traverse root
-		inOrder(node->right); // Traverse right
-	}
+// In order traversal (ascending order)
+void search_ascending_order(Node* crawler) {
+	if (crawler == NULL)
+		return;
+
+	search_ascending_order(crawler->left);
+	cout << crawler->data << " -> ";
+	search_ascending_order(crawler->right);
 }
 
-string search(int target) {
-	Node* pointer = root;
-	while (pointer != NULL) {
-		if (target == pointer->data)
-			return "(" + to_string(pointer->data) + ") found\n";
-		else if (target < pointer->data) // If target is smaller than parent
-			pointer = pointer->left;
-		else
-			pointer = pointer->right;
+void search_descending_order(Node* crawler) {
+	if (crawler == NULL)
+		return;
+
+	search_descending_order(crawler->right);
+	cout << crawler->data << " -> ";
+	search_descending_order(crawler->left);
+}
+
+void search(int target) {
+	Node* crawler = root;
+	
+	while (true) {
+		if (crawler == NULL) {
+			printf("(%d) not found\n", target);
+			return;
+		}
+
+		if (target == crawler->data) {// If target found, print the target
+			printf("(%d) found\n", crawler->data);
+			return;
+		}
+		else if (target < crawler->data) // If target is smaller than parent, search to the left to find the target
+			crawler = crawler->left;
+		else // Same process as above
+			crawler = crawler->right;
 	}
-	return "Not found\n";
 }
 
 int main() {
-	for (int i = 1; i <= 4; i++)
-		insert(i);
-	cout << "In order traversal : "; inOrder(root); cout << endl;
+	insert(3);
+	insert(1);
+	insert(7);
+	insert(5);
+	cout << "Search in ascending order : "; search_ascending_order(root); cout << "\n";
+	cout << "Search in descending order : "; search_descending_order(root); cout << "\n";
 
-	deleteNode(root, 4);
-	cout << "After deleting a node : "; inOrder(root); cout << endl;
+	short node_to_delete = 3;
+	delete_node(root, node_to_delete);
+	printf("After deleting (%d) : ", node_to_delete); search_ascending_order(root); cout << "\n";
 
-	cout << search(3);
+	search(3);
+	search(5);
 }
 ~~~
+## Result
+<img src="https://user-images.githubusercontent.com/67142421/148778914-a7f42d34-addd-4c75-a6df-3638c62bb195.png">
+
 
