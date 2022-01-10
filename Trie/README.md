@@ -59,7 +59,7 @@ void delete_word(string target) {
 			}
 		}
 		//-----
-		if(deallocation == false)
+		if (deallocation == false)
 			letters[i]->data = "";
 		else {
 			delete letters[i];
@@ -89,7 +89,7 @@ void match_whole_word_search(string target) {
 			cout << "(" << target << ") not found\n";
 			return;
 		}
-			
+
 		crawl = crawl->children[index];
 	}
 	if (crawl->data == target) // If target was found
@@ -114,7 +114,7 @@ void partial_string_search(string target) {
 		int index = target[i] - 'a';
 		if (crawler->children[index] == NULL)
 			return;
-		
+
 		crawler = crawler->children[index];
 	}
 	DFS(crawler);
@@ -129,11 +129,15 @@ int main() {
 	for (string i : words)
 		insert(i);
 
+	printf("-----Partial string search\n");
 	partial_string_search("th");
+	printf("-----\n");
 	match_whole_word_search("the");
 	match_whole_word_search("there");
 
-	delete_word("there");
+	string word = "there";
+	cout << "Delete (" << word << ")\n";
+	delete_word(word);
 	match_whole_word_search("there");
 }
 ~~~
