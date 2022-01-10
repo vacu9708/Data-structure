@@ -58,8 +58,9 @@ void deleteNode(vector<int>& heap_tree, int target) { // Function to delete an e
             heap_tree.pop_back(); // Delete the last node
             for (int i = size / 2 - 1; i >= 0; i--) // Max-heapify
                 heapify(heap_tree, i);
-            break;
+            return;
         }
+    printf("Target (%d) not found\n", target);
 }
 
 void print_list(vector<int>& heap_tree) {
