@@ -1,4 +1,4 @@
-# Queue
+# (Circular) queue
 **Queue** : First In First Out
 
 ~~~C++
