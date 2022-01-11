@@ -1,4 +1,6 @@
 # Data-structure
+I tried to write comments as in much detail
+as possible.
 * [Stack](https://github.com/vacu9708/Data-structure/tree/main/Stack)
 * [Queue](https://github.com/vacu9708/Data-structure/tree/main/Queue)
 * [Linked list](https://github.com/vacu9708/Data-structure/tree/main/Linked%20list)
