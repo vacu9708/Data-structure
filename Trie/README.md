@@ -44,7 +44,7 @@ void delete_word(string target) {
 		crawler = crawler->children[index];
 		letters.push_back(crawler);
 	}
-	
+
 	int last_letter = letters.size() - 1;
 	for (int i = last_letter; i >= 1; i--) { // letters[0] is root
 		int j = 0;
@@ -128,15 +128,15 @@ int main() {
 	for (string i : words)
 		insert(i);
 
-	printf("-----Partial string search\n");
+	printf("-----Partial string search : (th)\n");
 	partial_string_search("th");
 	printf("-----\n");
-	match_whole_word_search("the");
-	match_whole_word_search("there");
 
-	string word = "there";
+	string word = "the";
+	match_whole_word_search(word);
 	cout << "Delete (" << word << ")\n";
 	delete_word(word);
+	match_whole_word_search("the");
 	match_whole_word_search("there");
 }
 ~~~
