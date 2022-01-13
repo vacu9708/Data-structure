@@ -47,20 +47,18 @@ void delete_word(string target) {
 	
 	int last_letter = letters.size() - 1;
 	for (int i = last_letter; i >= 1; i--) { // letters[0] is root
-		bool deallocation = true;
+		int j = 0;
 		for (int j = 0; j < 26; j++) {// Check if target has any children
 			// If the target has a child which has never been visited, only delete the data without deallocation so that other words connected to the target node can be accessed
 			// For example, when deleting "the" : 
 			// 1. There is "there" but there isn't "the". In this case, there is no change because the data in the location of "the" is "".
 			// 2. There are both "there" and "the". In this case, only the data in the location of "the" is deleted and becomes "".
 			// 3. There is "the" and "atheb : Their paths don't overlap.
-			if (letters[i]->children[j] != NULL) { If a child was found, its parent can't be deallocated
-				deallocation = false;
+			if (letters[i]->children[j] != NULL) If a child was found, its parent can't be deallocated
 				break;
-			}
 		}
 		//-----
-		if (deallocation == false)
+		if (j < 26) // Don't deallocate because another word is connected
 			letters[i]->data = "";
 		else {
 			delete letters[i];
