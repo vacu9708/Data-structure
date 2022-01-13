@@ -88,7 +88,7 @@ public:
 };
 
 int main() {
-	HashTable* h = new HashTable(1);
+	HashTable* h = new HashTable(1); // Hash collision occurs because the size of the hashtable is 1, which is not enough.
 	list<string> container;
 	h->insert("John", "He is cute");
 	h->insert("Paul", "He is a cutie");
