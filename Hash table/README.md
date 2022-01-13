@@ -13,12 +13,11 @@ A hash table uses a hash function to compute an index, also called a hash code, 
 ~~~C++
 #include <iostream>
 #include <list>
-#include <string>
 using namespace std;
 
 class HashTable {
-public:
 	int table_length;
+public:
 	class Node {
 	public:
 		string key;
@@ -55,7 +54,7 @@ public:
 		int index = make_index(key);
 
 		// Find the node that has the key
-		auto iterator = table[index].begin();
+		list<Node>::iterator iterator;
 		for (iterator = table[index].begin(); iterator != table[index].end(); iterator++)
 			if (iterator->key == key)
 				break;
@@ -73,7 +72,7 @@ public:
 		int index = make_index(key);
 
 		// Find the node that has the key
-		auto iterator = table[index].begin();
+		list<Node>::iterator iterator;
 		for (iterator = table[index].begin(); iterator != table[index].end(); iterator++)
 			if (iterator->key == key)
 				break;
@@ -88,7 +87,7 @@ public:
 };
 
 int main() {
-	HashTable* h = new HashTable(1); // Hash collision occurs because the size of the hashtable is 1, which is not enough.
+	HashTable* h = new HashTable(1);
 	list<string> container;
 	h->insert("John", "He is cute");
 	h->insert("Paul", "He is a cutie");
