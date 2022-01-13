@@ -53,25 +53,42 @@ public:
 
 	void deleteData(string key) { // Delete the last data
 		int index = make_index(key);
-		if (table[index].empty()) {
+
+		// Find the node that has the key
+		auto iterator = table[index].begin();
+		for (iterator = table[index].begin(); iterator != table[index].end(); iterator++)
+			if (iterator->key == key)
+				break;
+		//-----
+		if (iterator == table[index].end()) {
 			cout << "(" << key << ") not found\n";
 			return;
 		}
+
 		cout << "Delete (" << key << ")\n";
-		table[index].pop_back();
+		table[index].erase(iterator);
 	}
 
 	void search(string key) {
 		int index = make_index(key);
-		if (table[index].empty())
-			cout << "Search : (" << key << ") not found\n";
-		for (Node i : table[index])
-			cout << "Search : (" << key << ") " << "(" << i.data << ") found\n";
+
+		// Find the node that has the key
+		auto iterator = table[index].begin();
+		for (iterator = table[index].begin(); iterator != table[index].end(); iterator++)
+			if (iterator->key == key)
+				break;
+		//-----
+		if (iterator == table[index].end()) {
+			cout << "Search : (" << key << ") -> (not found)\n";
+			return;
+		}
+
+		cout << "Search : (" << key << ") -> (" << iterator->data << ") found\n";
 	}
 };
 
 int main() {
-	HashTable* h = new HashTable(1111);
+	HashTable* h = new HashTable(1);
 	list<string> container;
 	h->insert("John", "He is cute");
 	h->insert("Paul", "He is a cutie");
@@ -82,4 +99,4 @@ int main() {
 }
 ~~~
 ## Result
-![Untitled](https://user-images.githubusercontent.com/67142421/148783425-8fae9f1b-3f41-4d8b-a70b-ae4e2781c94b.png)
+![Untitled](https://user-images.githubusercontent.com/67142421/149351330-0c070a9a-0547-44f4-abdf-68530d6f9aee.png)
