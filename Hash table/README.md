@@ -28,10 +28,10 @@ public:
 		}
 	};
 
-	list<Node>* table;
+	list<Node>* buckets;
 	HashTable(int table_length) {
 		this->table_length = table_length;
-		this->table = new list<Node>[table_length];
+		this->buckets = new list<Node>[table_length];
 	}
 
 	int make_index(string key) {
@@ -47,7 +47,7 @@ public:
 
 	void insert(string key, string data) { // Insert data into hash table
 		int index = make_index(key);
-		table[index].push_back(Node(key, data));
+		buckets[index].push_back(Node(key, data));
 	}
 
 	void deleteData(string key) { // Delete the last data
@@ -55,17 +55,17 @@ public:
 
 		// Find the node that has the key
 		list<Node>::iterator iterator;
-		for (iterator = table[index].begin(); iterator != table[index].end(); iterator++)
+		for (iterator = buckets[index].begin(); iterator != buckets[index].end(); iterator++)
 			if (iterator->key == key)
 				break;
 		//-----
-		if (iterator == table[index].end()) {
+		if (iterator == buckets[index].end()) {
 			cout << "(" << key << ") not found\n";
 			return;
 		}
 
 		cout << "Delete (" << key << ")\n";
-		table[index].erase(iterator);
+		buckets[index].erase(iterator);
 	}
 
 	void search(string key) {
@@ -73,11 +73,11 @@ public:
 
 		// Find the node that has the key
 		list<Node>::iterator iterator;
-		for (iterator = table[index].begin(); iterator != table[index].end(); iterator++)
+		for (iterator = buckets[index].begin(); iterator != buckets[index].end(); iterator++)
 			if (iterator->key == key)
 				break;
 		//-----
-		if (iterator == table[index].end()) {
+		if (iterator == buckets[index].end()) {
 			cout << "Search : (" << key << ") -> (not found)\n";
 			return;
 		}
