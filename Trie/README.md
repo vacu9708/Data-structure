@@ -54,7 +54,7 @@ void delete_word(string target) {
 			// 1. There is "there" but there isn't "the". In this case, there is no change because the data in the location of "the" is "".
 			// 2. There are both "there" and "the". In this case, only the data in the location of "the" is deleted and becomes "".
 			// 3. There is "the" and "atheb : Their paths don't overlap.
-			if (letters[i]->children[j] != NULL) If a child was found, its parent can't be deallocated
+			if (letters[i]->children[j] != NULL) // If a child was found, its parent can't be deallocated
 				break;
 		}
 		//-----
