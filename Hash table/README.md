@@ -43,7 +43,7 @@ public:
 			hashcode += c * weight; // To distinguish anagrams such as "abc" and "cba"
 			weight *= 10;
 		}
-		return hashcode % table_length; // Convert hash code to index with hash function
+		return hashcode % table_length; // Hash function : convert hash code to index.
 	}
 
 	void insert(string key, string data) { // Insert data into hash table
@@ -71,7 +71,7 @@ public:
 };
 
 int main() {
-	HashTable* h = new HashTable(11);
+	HashTable* h = new HashTable(1111);
 	list<string> container;
 	h->insert("John", "He is cute");
 	h->insert("Paul", "He is a cutie");
