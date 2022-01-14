@@ -59,7 +59,6 @@ void main() {
 
 ## Circular queue
 ~~~C++
-// Circular queue
 #include <iostream>
 using namespace std;
 
@@ -72,9 +71,9 @@ void put(int data) {
 	if ((rear + 1) % QUEUE_LENGTH == front)
 		printf("The queue is full\n");
 	else {
-		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 		printf("Put (%d)\n", data);
 		queue[rear] = data;
+		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 	}
 }
 
@@ -82,8 +81,8 @@ void get() {
 	if (front == rear)
 		printf("The queue is empty\n");
 	else {
-		front = (front + 1) % QUEUE_LENGTH;
 		printf("Get (%d)\n", queue[front]);
+		front = (front + 1) % QUEUE_LENGTH;
 	}
 }
 
