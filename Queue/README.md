@@ -64,25 +64,25 @@ using namespace std;
 
 const char QUEUE_LENGTH = 4; // Actually the size is 3
 
-int queue[QUEUE_LENGTH] = { 0, };
+string queue[QUEUE_LENGTH];
 int front = 0, rear = 0;
 
 void put(int data) {
 	if ((rear + 1) % QUEUE_LENGTH == front)
 		printf("The queue is full\n");
 	else {
+		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 		printf("Put (%d)\n", data);
 		queue[rear] = data;
-		rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 	}
 }
 
-void get() {
+string get() {
 	if (front == rear)
 		printf("The queue is empty\n");
 	else {
-		printf("Get (%d)\n", queue[front]);
 		front = (front + 1) % QUEUE_LENGTH;
+		return queue[front];
 	}
 }
 
