@@ -8,7 +8,7 @@ A priority queue is a collection of data elements similar to a regular queue in 
 * **Linked list**
   * insertion() : O(n) [It takes O(n) to compare the priority of all the elements before inserting]
   * get() : O(1)
-As stated above, priority queue using heap is more stable than linked list. Priority queue using linked list is unstable in terms of time complexity.
+  As stated above, priority queue using heap is more stable than linked list. Priority queue using linked list is unstable in terms of time complexity.
 
 ## Priority queue using heap
 ~~~C++
@@ -32,8 +32,9 @@ void heapify(vector<int>& heap_tree, int parent) { // Function to max-heapify th
 
 
 void insert(vector<int>& heap_tree, int newNum) { // Function to insert an element into the tree
+    int tree_size = heap_tree.size();
     heap_tree.push_back(newNum);
-    for (int i = heap_tree.size() / 2 - 1; i >= 0; i--) // Max-heapify
+    for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
         heapify(heap_tree, i);
 }
 
@@ -41,31 +42,32 @@ int get(vector<int>& heap_tree) {
     int highest_priority = heap_tree[0];
 
     // Put the last element of heap tree into the first index
-    int size = heap_tree.size();
-    heap_tree[0] = heap_tree[size - 1];
+    int tree_size = heap_tree.size();
+    heap_tree[0] = heap_tree[tree_size - 1];
     heap_tree.pop_back();
     //-----
-    for (int i = size / 2 - 1; i >= 0; i--) // Max-heapify
+    for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
         heapify(heap_tree, i);
     return highest_priority;
 }
 
 void deleteNode(vector<int>& heap_tree, int target) { // Function to delete an element from the tree
-    int size = heap_tree.size();
-    for (int i = 0; i < size; i++)
+    int tree_size = heap_tree.size();
+    for (int i = 0; i < tree_size; i++)
         if (heap_tree[i] == target) { // If target was found
             printf("Delete (%d)\n", target);
-            heap_tree[i] = heap_tree[size - 1]; // Change it to the last node
+            heap_tree[i] = heap_tree[tree_size - 1]; // Change it to the last node
             heap_tree.pop_back(); // Delete the last node
-            for (int i = size / 2 - 1; i >= 0; i--) // Max-heapify
+            for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
                 heapify(heap_tree, i);
             return;
         }
     printf("Target (%d) not found\n", target);
 }
 
-void print_list(vector<int>& heap_tree) {
-    for (int i = 0; i < heap_tree.size(); ++i)
+void print_array(vector<int>& heap_tree) {
+    int tree_size = heap_tree.size()
+    for (int i = 0; i < tree_size; ++i)
         cout << heap_tree[i] << " ";
     cout << "\n";
 }
@@ -74,13 +76,13 @@ int main() {
     vector<int> heap_tree;
     for (int i = 1; i <= 9; i += 2)
         insert(heap_tree, i);
-    printf("Heap tree : "); print_list(heap_tree);
+    printf("Heap tree : "); print_array(heap_tree);
 
     deleteNode(heap_tree, 7);
-    printf("Heap tree : "); print_list(heap_tree);
+    printf("Heap tree : "); print_array(heap_tree);
 
     printf("Get (%d)\n", get(heap_tree));
-    printf("Heap tree : "); print_list(heap_tree);
+    printf("Heap tree : "); print_array(heap_tree);
 }
 ~~~
 ## Result
