@@ -45,21 +45,20 @@ void delete_word(string target) {
 		letters.push_back(crawler);
 	}
 
-	for (int i = letters.size() - 1; i >= 1; i--) {
-		bool deallocation = true;
+	int last_letter = letters.size() - 1;
+	for (int i = last_letter; i >= 1; i--) { // letters[0] is root
+		int j = 0;
 		for (int j = 0; j < 26; j++) {// Check if target has any children
 			// If the target has a child which has never been visited, only delete the data without deallocation so that other words connected to the target node can be accessed
 			// For example, when deleting "the" : 
 			// 1. There is "there" but there isn't "the". In this case, there is no change because the data in the location of "the" is "".
 			// 2. There are both "there" and "the". In this case, only the data in the location of "the" is deleted and becomes "".
 			// 3. There is "the" and "atheb : Their paths don't overlap.
-			if (letters[i]->children[j] != NULL) {
-				deallocation = false;
+			if (letters[i]->children[j] != NULL) // If a child was found, its parent can't be deallocated
 				break;
-			}
 		}
 		//-----
-		if (deallocation == false)
+		if (j < 26) // Don't deallocate because another word is connected
 			letters[i]->data = "";
 		else {
 			delete letters[i];
@@ -68,7 +67,8 @@ void delete_word(string target) {
 	}
 }
 
-void delete_word_simple(string target) { // Memory leak occurs
+/* Memory leak occurs
+void delete_word_simple(string target) {
 	TrieNode* crawl = root;
 	int target_length = target.length();
 	for (int i = 0; i < target_length; i++) {
@@ -78,8 +78,7 @@ void delete_word_simple(string target) { // Memory leak occurs
 	}
 	if (crawl->data == target)
 		crawl->data = "";
-}
-
+}*/
 
 void match_whole_word_search(string target) {
 	TrieNode* crawl = root;
@@ -129,15 +128,15 @@ int main() {
 	for (string i : words)
 		insert(i);
 
-	printf("-----Partial string search\n");
+	printf("-----Partial string search : (th)\n");
 	partial_string_search("th");
 	printf("-----\n");
-	match_whole_word_search("the");
-	match_whole_word_search("there");
 
-	string word = "there";
+	string word = "the";
+	match_whole_word_search(word);
 	cout << "Delete (" << word << ")\n";
 	delete_word(word);
+	match_whole_word_search("the");
 	match_whole_word_search("there");
 }
 ~~~

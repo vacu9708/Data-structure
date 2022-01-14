@@ -59,13 +59,12 @@ void main() {
 
 ## Circular queue
 ~~~C++
-// Circular queue
 #include <iostream>
 using namespace std;
 
 const char QUEUE_LENGTH = 4; // Actually the size is 3
 
-int queue[QUEUE_LENGTH] = { 0, };
+string queue[QUEUE_LENGTH];
 int front = 0, rear = 0;
 
 void put(int data) {
@@ -78,12 +77,12 @@ void put(int data) {
 	}
 }
 
-void get() {
+string get() {
 	if (front == rear)
 		printf("The queue is empty\n");
 	else {
 		front = (front + 1) % QUEUE_LENGTH;
-		printf("Get (%d)\n", queue[front]);
+		return queue[front];
 	}
 }
 

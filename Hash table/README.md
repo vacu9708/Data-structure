@@ -13,12 +13,11 @@ A hash table uses a hash function to compute an index, also called a hash code, 
 ~~~C++
 #include <iostream>
 #include <list>
-#include <string>
 using namespace std;
 
 class HashTable {
-public:
 	int table_length;
+public:
 	class Node {
 	public:
 		string key;
@@ -29,10 +28,10 @@ public:
 		}
 	};
 
-	list<Node>* table;
+	list<Node>* buckets;
 	HashTable(int table_length) {
 		this->table_length = table_length;
-		this->table = new list<Node>[table_length];
+		this->buckets = new list<Node>[table_length];
 	}
 
 	int make_index(string key) {
@@ -43,35 +42,52 @@ public:
 			hashcode += c * weight; // To distinguish anagrams such as "abc" and "cba"
 			weight *= 10;
 		}
-		return hashcode % table_length; // Convert hash code to index with hash function
+		return hashcode % table_length; // Hash function : convert hash code to index.
 	}
 
 	void insert(string key, string data) { // Insert data into hash table
 		int index = make_index(key);
-		table[index].push_back(Node(key, data));
+		buckets[index].push_back(Node(key, data));
 	}
 
 	void deleteData(string key) { // Delete the last data
 		int index = make_index(key);
-		if (table[index].empty()) {
+
+		// Find the node that has the key
+		list<Node>::iterator iterator;
+		for (iterator = buckets[index].begin(); iterator != buckets[index].end(); iterator++)
+			if (iterator->key == key)
+				break;
+		//-----
+		if (iterator == buckets[index].end()) {
 			cout << "(" << key << ") not found\n";
 			return;
 		}
+
 		cout << "Delete (" << key << ")\n";
-		table[index].pop_back();
+		buckets[index].erase(iterator);
 	}
 
 	void search(string key) {
 		int index = make_index(key);
-		if (table[index].empty())
-			cout << "Search : (" << key << ") not found\n";
-		for (Node i : table[index])
-			cout << "Search : (" << key << ") " << "(" << i.data << ") found\n";
+
+		// Find the node that has the key
+		list<Node>::iterator iterator;
+		for (iterator = buckets[index].begin(); iterator != buckets[index].end(); iterator++)
+			if (iterator->key == key)
+				break;
+		//-----
+		if (iterator == buckets[index].end()) {
+			cout << "Search : (" << key << ") -> (not found)\n";
+			return;
+		}
+
+		cout << "Search : (" << key << ") -> (" << iterator->data << ") found\n";
 	}
 };
 
 int main() {
-	HashTable* h = new HashTable(11);
+	HashTable* h = new HashTable(1);
 	list<string> container;
 	h->insert("John", "He is cute");
 	h->insert("Paul", "He is a cutie");
@@ -82,4 +98,4 @@ int main() {
 }
 ~~~
 ## Result
-![Untitled](https://user-images.githubusercontent.com/67142421/148783425-8fae9f1b-3f41-4d8b-a70b-ae4e2781c94b.png)
+![Untitled](https://user-images.githubusercontent.com/67142421/149351330-0c070a9a-0547-44f4-abdf-68530d6f9aee.png)
