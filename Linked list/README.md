@@ -1,8 +1,7 @@
 # Linked list
-A linked list is a linear container of data elements whose order is not given by their physical placement in memory unlike *Array*
+>A linked list is a linear container of data elements whose order is not given by their physical placement in memory unlike *Array*
 
 ![1_m11VTAK3YJgRemmfBI_2uw](https://user-images.githubusercontent.com/67142421/148844977-d81a8d5a-4cbc-4ed4-b4bc-5a2254f72203.png)
-
 
 ## Array VS Linked list
 * **Array**
