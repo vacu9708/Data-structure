@@ -1,5 +1,5 @@
 # Stack
-Stack : Last In First Out
+>A stack is an abstract data type that holds an ordered, linear sequence of items. In contrast to a queue, a stack is a **last in, first out** (LIFO) structure.
 
 ![stack-660x345](https://user-images.githubusercontent.com/67142421/148844511-1d9a04c3-cb47-4609-b94e-1a9a27723e4f.png)
 
