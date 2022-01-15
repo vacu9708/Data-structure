@@ -45,7 +45,7 @@ void insert_without_recursion(int data) {
 	while (true)
 		// If new node is smaller than parent, go to the left child
 		if (data < crawler->data)
-			if (crawler->left == NULL) { // If the parent has a left child, insert in the left child
+			if (crawler->left == NULL) { // If the parent doesn't have a left child, insert in the left child
 				crawler->left = new_node(data);
 				return;
 			}
