@@ -8,7 +8,7 @@ A priority queue is a collection of data elements similar to a regular queue in 
 * **Linked list**
   * insertion() : **O(n)** [It takes **O(n)** to compare the priority of all the elements before inserting)]
   * get() : **O(1)** [Because all that needs to be done is just get the front data]
-  As stated above, priority queue using heap is more stable than linked list. Priority queue using linked list is unstable in terms of time complexity.
+>As stated above, priority queue using heap is more stable than linked list in terms of time complexity while priority queue using linked list is unstable.
 
 ## Priority queue using heap
 ~~~C++
