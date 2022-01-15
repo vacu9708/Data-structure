@@ -3,7 +3,8 @@
 >It can be used to search for a number in **O(log(n))** time, which is faster than linear search that takes **O(n)**.
 
 ## How to delete a node that has 2 children in Binary Search tree
->Place either the minimum of the right subtree or the maximum of the left subtree in the position of the node to be deleted
+>When deleting a node that has no child or only one child, all that has to be done is delete and put the address of the child of the deleted node to the deleted node's parent. But deleting a node that has 2 children is more complicated. <br>
+* **How to delete it** : Place either the minimum of the right subtree or the maximum of the left subtree in the position of the node to be deleted
 
 ![Deleting a node with 2 children in binary search tree](https://user-images.githubusercontent.com/67142421/148779207-367d1165-eb0b-4e88-9de9-ac6703f663ba.png)
 
@@ -100,7 +101,7 @@ Node* delete_node(Node* crawler, int target) { // Does the same function as dele
 		crawler->left = delete_node(crawler->left, target);
 	else // Else, same process as right above
 		crawler->right = delete_node(crawler->right, target);
-	return crawler; // In order not to put a trash address in DFS
+	return crawler; // In order not to put a trash address to other nodes that have been visited.
 }
 
 void delete_node2(Node* crawler, int target) { // Does the same function as delete_node2() above but longer code
