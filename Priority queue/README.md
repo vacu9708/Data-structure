@@ -3,10 +3,10 @@ A priority queue is a collection of data elements similar to a regular queue in 
 
 ## Why is heap used instead of linked list to implement priority queue?
 * **Heap**
-  * insertion() : **O(logn)** [Heapifying is needed after insertion(), which takes O(logn)]
-  * get() : **O(logn)** [Heapifying is needed after get(), which takes O(logn)]
+  * insertion() : **O(logn)** [Heapifying is needed after insertion(), which takes **O(logn)**]
+  * get() : **O(logn)** [Heapifying is needed after get(), which takes **O(logn)**]
 * **Linked list**
-  * insertion() : **O(n)** [It takes O(n) to compare the priority of all the elements before inserting)]
+  * insertion() : **O(n)** [It takes **O(n)** to compare the priority of all the elements before inserting)]
   * get() : **O(1)** [Because all that needs to be done is just get the front data]
   As stated above, priority queue using heap is more stable than linked list. Priority queue using linked list is unstable in terms of time complexity.
 
