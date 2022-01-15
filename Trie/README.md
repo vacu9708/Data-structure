@@ -1,7 +1,7 @@
 # Trie
-A trie, also called prefix tree, is a type of search tree used for locating specific keys from within a set. These keys are most often strings.
-<img src="https://user-images.githubusercontent.com/67142421/148843832-308bc900-afe5-4692-b1cb-8cbc4d4fa786.png" width="400" height="400">
+>A trie, also called prefix tree, is a type of search tree used for locating specific keys from within a set. These keys are most often strings.
 
+<img src="https://user-images.githubusercontent.com/67142421/148843832-308bc900-afe5-4692-b1cb-8cbc4d4fa786.png" width="400" height="400">
 
 ~~~C++
 // -----C++ implementation of operations on Trie
