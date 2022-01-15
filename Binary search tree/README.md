@@ -24,42 +24,43 @@ Node* new_node(int data) {
 	return temp;
 }
 
-Node* insert_recursion(Node* node, int data) {
-	if (node == NULL) // If the pointer doesn't have address (the node doesn't exist)
+Node* insert(Node* node, int data) {
+	if (node == NULL) // When a node doesn't exist in the current address, create a node.
 		return new_node(data);
-	if (data < node->data) // If new node is smaller than parent
-		node->left = insert_recursion(node->left, data);
-	else
-		node->right = insert_recursion(node->right, data);
-	return node; // When node->left has address, in order not to return a trash address
+
+	if (data < node->data) // If new node is smaller than parent, go to the left child
+		node->left = insert(node->left, data);
+	else // If not, go to the right child
+		node->right = insert(node->right, data);
+	return node; // In order not to return a trash address to other nodes that have been visited.
 }
 
-void insert(int data) {
+void insert_without_recursion(int data) {
 	if (root == NULL) { // If there isn't a root, make a root
 		root = new_node(data);
 		return;
 	}
 
-	Node* pointer = root;
+	Node* crawler = root;
 	while (true)
-		// If smaller than parent, work on the left child
-		if (data < pointer->data)
-			if (pointer->left == NULL) { // If the parent has a left child, insert in the left child
-				pointer->left = new_node(data);
+		// If new node is smaller than parent, go to the left child
+		if (data < crawler->data)
+			if (crawler->left == NULL) { // If the parent has a left child, insert in the left child
+				crawler->left = new_node(data);
 				return;
 			}
 			else // If the parent has a left child, go to the left child to get to the destination
-				pointer = pointer->left;
-	//-----
-	// If not smaller than parent, work on the right child
+				crawler = crawler->left;
+		//-----
+		// If not smaller than parent, go to the right child
 		else
-			if (pointer->right == NULL) { // If the parent doesn't have a right child, insert in the right child
-				pointer->right = new_node(data);
+			if (crawler->right == NULL) { // If the parent doesn't have a right child, insert in the right child
+				crawler->right = new_node(data);
 				return;
 			}
 			else // If the parent has a right child, go to the right child to get to the destination
-				pointer = pointer->right;
-	//-----
+				crawler = crawler->right;
+		//-----
 }
 
 Node* minNode(Node* node) {
@@ -101,7 +102,7 @@ Node* delete_node(Node* crawler, int target) { // Does the same function as dele
 	return crawler; // In order not to put a trash address in DFS
 }
 
-void delete_node2(Node* crawler, int target) { // Does the same function as delete_node2() above
+void delete_node2(Node* crawler, int target) { // Does the same function as delete_node2() above but longer code
 	Node* prev = crawler;
 	bool prev_left = false;
 	while (crawler != NULL) {
@@ -166,7 +167,7 @@ void search_descending_order(Node* crawler) {
 
 void search(int target) {
 	Node* crawler = root;
-	
+
 	while (true) {
 		if (crawler == NULL) {
 			printf("(%d) not found\n", target);
@@ -185,10 +186,10 @@ void search(int target) {
 }
 
 int main() {
-	insert(3);
-	insert(1);
-	insert(7);
-	insert(5);
+	root = insert(root, 3);
+	insert(root, 1);
+	insert(root, 7);
+	insert(root, 5);
 	cout << "Search in ascending order : "; search_ascending_order(root); cout << "\n";
 	cout << "Search in descending order : "; search_descending_order(root); cout << "\n";
 
