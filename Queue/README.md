@@ -62,7 +62,7 @@ void main() {
 #include <iostream>
 using namespace std;
 
-const char QUEUE_LENGTH = 4; // Actually the size is 3
+const char QUEUE_LENGTH = 4; // The real size is 3
 
 string queue[QUEUE_LENGTH];
 int front = 0, rear = 0;
