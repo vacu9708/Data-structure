@@ -1,5 +1,6 @@
 # Priority queue
-A priority queue is a collection of data elements similar to a regular queue in which each element additionally has a "priority" associated with it. In a priority queue, an element with high priority is served before an element with low priority.
+>A priority queue is a collection of data elements similar to a regular queue in which each element additionally has a "priority" associated with it.<br>
+>In a priority queue, an >element with high priority is served before an element with low priority.
 
 ## Why is heap used instead of linked list to implement priority queue?
 * **Heap**
