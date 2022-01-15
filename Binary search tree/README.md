@@ -1,7 +1,10 @@
 # Binary search tree
-Binary search tree : A binary tree where the left child of a parent is smaller than the parent and the right child is bigger than the parent.
+>Binary search tree : A binary tree where the left child of a parent is smaller than the parent and the right child is bigger than the parent.
+>It can be used to search for a number in **O(log(n))** time, which is faster than linear search that takes **O(n)**.
 
-## The principle of deleting a node that has 2 children in Binary Search tree (korean)
+## How to delete a node that has 2 children in Binary Search tree
+>Place either the minimum of the right subtree or the maximum of the left subtree in the position of the node to be deleted
+
 ![Deleting a node with 2 children in binary search tree](https://user-images.githubusercontent.com/67142421/148779207-367d1165-eb0b-4e88-9de9-ac6703f663ba.png)
 
 ~~~C++
