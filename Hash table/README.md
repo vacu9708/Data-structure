@@ -1,9 +1,9 @@
 # Hash table
->A hash table is a data structure that can map keys to values used for searching for elements.
+>A hash table is an associative array(whose indices are arbitrary strings or other complicated objects) that can map keys to values used for searching for elements.<br>
 >A hash table uses a hash function to compute an index, also called a hash code, into an array, from which the desired value can be found very fast.
 
 ## The characteristic of Hash table
->Each key is mapped to a specific index by a *hash function* in the array and its value stored in that location unless a *hash collision* occurs. Because of this, insertion, search and delete operations are constant time **O(1)**
+>Each key is mapped to a specific index by a *hash function* in the array and its value stored in that location unless a *hash collision* occurs. Because of this, insertion, search and delete operations are conducted in constant time **O(1)** fast.
 
 ![473px-Hash_table_3_1_1_0_1_0_0_SP svg](https://user-images.githubusercontent.com/67142421/148845486-a0a5ecbe-ddfb-4660-983b-781dee2fcf82.png)
 
