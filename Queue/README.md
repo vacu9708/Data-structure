@@ -1,5 +1,5 @@
 # Queue
-**Queue** : First In First Out
+>A queue is an abstract data type that holds an ordered, linear sequence of items. In contrast to a stack, a queue is a first in, first out (FIFO) structure.
 
 ![image-91](https://user-images.githubusercontent.com/67142421/148844843-6b484f8d-87a2-4657-bdce-d7589ec942d7.png)
 
