@@ -75,8 +75,8 @@ Node* delete_node(Node* crawler, int target) { // Does the same function as dele
 		cout << "Not found\n";
 		return crawler; // To prevent read violation and trash address, instead put NULL address
 	}
-
-	if (target == crawler->data) { // If target was found
+	// If target was found
+	if (target == crawler->data) {
 		// If the node has only one child or no child
 		if (crawler->left == NULL) {
 			Node* temp = crawler->right; // Store the right child of target node to substitute the target node with it
@@ -95,6 +95,7 @@ Node* delete_node(Node* crawler, int target) { // Does the same function as dele
 		crawler->right = delete_node(crawler->right, temp->data); // Delete the minimum of right subtree
 		//-----
 	}
+	//-----
 	else if (target < crawler->data) // If target is smaller than parent, go to left child to find the target
 		crawler->left = delete_node(crawler->left, target);
 	else // Else, same process as right above
