@@ -135,7 +135,7 @@ void delete_node2(Node* crawler, int target) { // Does the same function as dele
 			prev_left = true;
 		}
 		//-----
-		// Else, same process as right above
+		// Else, the same process as right above
 		else {
 			prev = crawler;
 			crawler = crawler->right;
