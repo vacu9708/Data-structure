@@ -1,5 +1,5 @@
 # Binary search tree
->Binary search tree : A binary tree where the left child of a parent is smaller than the parent and the right child is bigger than the parent.
+>Binary search tree is a binary tree used for fast lookups where the left child of a parent is smaller than the parent and the right child is bigger than the parent.
 >It can be used to search for a number in **O(log(n))** time, which is faster than linear search that takes **O(n)**.
 
 ## How to delete a node that has 2 children in Binary Search tree
