@@ -1,5 +1,8 @@
 # Trie
 >A trie, also called prefix tree, is a type of search tree used for locating specific keys from within a set. These keys are most often strings.
+>How can we search for a string? The simplest way is just to compare all the strings using *linear search*. But this way is very ineffective for computers because,
+>for example, when searching for a string among n strings whose maximum length is m, **O(nm)** is taken. By using *Trie* data structure, we can search for a string
+>in **O(n)** time very fast.
 
 <img src="https://user-images.githubusercontent.com/67142421/148843832-308bc900-afe5-4692-b1cb-8cbc4d4fa786.png" width="400" height="400">
 
