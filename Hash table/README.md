@@ -1,5 +1,5 @@
 # Hash table
->A hash table is an associative array(whose indices are arbitrary strings or other complicated objects) that can map keys to values used for searching for elements.<br>
+>A hash table is an associative array, whose indices are normally arbitrary strings or other complicated objects, which maps keys to values used for searching for elements.<br>
 >A hash table uses a hash function to compute an index, also called a hash code, into an array, from which the desired value can be found very fast irrespective of the number of the elements.
 
 ## The characteristic of Hash table
@@ -8,9 +8,11 @@
 ![473px-Hash_table_3_1_1_0_1_0_0_SP svg](https://user-images.githubusercontent.com/67142421/148845486-a0a5ecbe-ddfb-4660-983b-781dee2fcf82.png)
 
 ## Hash collision
+> There is a possibility that two keys result in the same value. The situation where a newly inserted key maps to an already occupied slot in the hash table is called *collision* and must be handled using some collision handling technique. 
 ![hashtable2](https://user-images.githubusercontent.com/67142421/148845229-92e74e37-9e50-42db-91cb-c1f49d493891.png)
 
 ## Solution of hash collision : Separate chaining
+>The idea is to make each cell of hash table have a linked list to solve the hash collision.
 ![image](https://user-images.githubusercontent.com/67142421/150531067-fe59c4e7-2f4c-4d55-9705-1fb2d1c509ce.png)
 
 ~~~C++
