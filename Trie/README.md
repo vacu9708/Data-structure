@@ -4,10 +4,15 @@
 >for example, when searching for a string among n strings whose maximum length is m, **O(nm)** is taken. By using *Trie* data structure, we can search for a string
 >in **O(n)** time very fast.
 
+### Examples of this data structure.
+* auto-complete algorithms used in cellphones, search engines, and so on.
+
 <img src="https://user-images.githubusercontent.com/67142421/148843832-308bc900-afe5-4692-b1cb-8cbc4d4fa786.png" width="400" height="400">
 
+## However
+>Trie takes a lot of memory space in exchange for the fast speed because each node has 26 pointers. It's a good example of time-space trade-off.
+
 ~~~C++
-// -----C++ implementation of operations on Trie
 #include <iostream>
 #include <string>
 #include <vector>
@@ -16,8 +21,8 @@ using namespace std;
 const int ALPHABET_SIZE = 26; // ALPHABET_SIZE = 67 to include uppercase letters
 
 struct TrieNode {
-	TrieNode* children[ALPHABET_SIZE] = { NULL, };
 	string data = "";
+	TrieNode* children[ALPHABET_SIZE] = { NULL, };
 };
 TrieNode* root;
 
