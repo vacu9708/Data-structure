@@ -11,7 +11,7 @@
 ![hashtable2](https://user-images.githubusercontent.com/67142421/148845229-92e74e37-9e50-42db-91cb-c1f49d493891.png)
 
 ## Solution of hash collision : Separate chaining
-![675px-Hash_table_5_0_1_1_1_1_1_LL svg](https://user-images.githubusercontent.com/67142421/148845616-96162e68-6cb0-44e3-8344-042429f77294.png)
+![image](https://user-images.githubusercontent.com/67142421/150531067-fe59c4e7-2f4c-4d55-9705-1fb2d1c509ce.png)
 
 ~~~C++
 #include <iostream>
