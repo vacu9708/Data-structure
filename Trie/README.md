@@ -11,7 +11,7 @@
 
 ## However
 >Trie takes a lot of memory space in exchange for the fast speed because each node has 26 pointers. It's a good example of time-space trade-off.
-
+---
 ~~~C++
 #include <iostream>
 #include <string>
