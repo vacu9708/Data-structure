@@ -41,4 +41,5 @@ void main() {
     cout << top() << "\n"; // Empty stack
 }
 ~~~
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148784742-8885e10f-f812-4679-9364-8315f9690ed9.png)
