@@ -140,7 +140,7 @@ int main(void) {
 }
 ~~~
 
-## Result
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148810452-62986203-1c65-4737-94f0-0f9a6020fb0e.png)
 
 ## Exceptions handled
@@ -295,4 +295,5 @@ int main(void) {
 	cout << list1.back() << "\n";
 }
 ~~~
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148794108-cc2cb13a-ee86-4521-81ba-6f2e36a620af.png)
