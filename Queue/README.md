@@ -54,7 +54,7 @@ void main() {
 		printf("Get (%d)", get());
 }
 ~~~
-## Result
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148811614-83fe5009-8aa2-4657-9116-df5999a4fcda.png)
 
 ## Circular queue
@@ -96,6 +96,6 @@ void main() {
 		get();
 }
 ~~~
-## Result
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148811780-8cae3043-6f66-4003-a5fc-88f26461aca4.png)
 
