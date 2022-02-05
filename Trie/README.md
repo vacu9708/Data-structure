@@ -119,6 +119,7 @@ void partial_string_search(string target) {
 	int target_length = target.length();
 	for (int i = 0; i < target_length; i++) {
 		int index = target[i] - 'a';
+		
 		if (crawler->children[index] == NULL)
 			return;
 
