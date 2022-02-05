@@ -203,7 +203,7 @@ int main() {
 	search(5);
 }
 ~~~
-## Result
+## Output
 <img src="https://user-images.githubusercontent.com/67142421/148778914-a7f42d34-addd-4c75-a6df-3638c62bb195.png">
 
 
