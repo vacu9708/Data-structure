@@ -150,4 +150,4 @@ int main() {
 ~~~
 
 ## Output
-![Untitled](https://user-images.githubusercontent.com/67142421/148843104-56256946-d593-4a74-a2ba-69b09d34862c.png)
+![image](https://user-images.githubusercontent.com/67142421/152630697-41821743-390d-443c-b6ea-90c54aa80c10.png)
