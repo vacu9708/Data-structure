@@ -91,7 +91,7 @@ int main() {
     printf("Heap tree : "); print_array(heap_tree);
 }
 ~~~
-## Result
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148804359-b3bc1e37-6b7a-44ba-ae3c-5ac311296b27.png)
 
 
@@ -193,6 +193,6 @@ int main(void) {
 		printf("Get (%d)\n", get());
 }
 ~~~
-## Result
+## Output
 ![Untitled](https://user-images.githubusercontent.com/67142421/148811152-0abb0d7b-68ea-4e46-b16b-04a0d3fd97cf.png)
 
