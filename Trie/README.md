@@ -144,7 +144,7 @@ int main() {
 	match_whole_word_search(word);
 	cout << "Delete (" << word << ")\n";
 	delete_word(word);
-	match_whole_word_search("the");
+	match_whole_word_search(word);
 	match_whole_word_search("there");
 }
 ~~~
