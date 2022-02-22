@@ -23,10 +23,10 @@
 using namespace std;
 
 vector<int> heap_tree;
-int tree_size = heap_tree.size();
 
 void heapify(int parent) { // Function to max-heapify the tree
     int left = 2 * parent + 1, right = 2 * parent + 2;
+    int tree_size = heap_tree.size();
     // If child is larger than parent, swap parent and child
     if (left < tree_size && heap_tree[left] > heap_tree[parent]) { // Changing the inequality sign makes it min-heapify
         swap(heap_tree[left], heap_tree[parent]);
@@ -40,12 +40,14 @@ void heapify(int parent) { // Function to max-heapify the tree
 
 
 void insert(int new_num) { // Function to insert an element into the tree
+    int tree_size = heap_tree.size();
     heap_tree.push_back(new_num);
     for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
         heapify(i);
 }
 
 int get(vector<int>& heap_tree) {
+    int tree_size = heap_tree.size();
     int highest_priority = heap_tree[0];
 
     // Put the last element of heap tree into the first index
