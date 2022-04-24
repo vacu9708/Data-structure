@@ -25,35 +25,33 @@ public:
 	public:
 		int data;
 		Node* next = NULL;
+
+		Node(int data, Node* next) {
+			this->data = data;
+			this->next = next;
+		}
 	};
 
 	Node* front = 0;
 	Node* rear = 0;
 
-	Node* new_node(int data) {
-		Node* node = new Node;
-		node->data = data;
-		return node;
-	}
-
 	void push_front(int data) {
 		if (front == NULL) { // If there are no nodes
-			front = rear = new_node(data);
+			front = rear = new Node(data, 0);
 			return;
 		}
 
 		Node* prev_front = front;
-		front = new_node(data);
-		front->next = prev_front;
+		front = new Node(data, prev_front);
 	}
 
 	void push_back(int data) {
 		if (front == NULL) { // If there are no nodes
-			front = rear = new_node(data);
+			front = rear = new Node(data, 0);
 			return;
 		}
 
-		rear->next = new_node(data);
+		rear->next = new Node(data, 0);
 		rear = rear->next;
 	}
 
@@ -65,14 +63,10 @@ public:
 			crawler = crawler->next;
 		}
 
-		if (crawler == front) { // When inserting at front
-			front = new_node(data);
-			front->next = crawler;
-		}
-		else {
-			prev_crawler->next = new_node(data);
-			prev_crawler->next->next = crawler;
-		}
+		if (crawler == front) // When inserting at front
+			front = new Node(data, crawler);
+		else
+			prev_crawler->next = new Node(data, crawler);
 	}
 
 	void delete_node(int index) {
@@ -111,7 +105,7 @@ public:
 
 		for (int i = 0; i < index; i++) // Go to the node to index
 			crawler = crawler->next;
-		
+
 		crawler->data = desired_value;
 	}
 
