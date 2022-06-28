@@ -78,13 +78,12 @@ Node* delete_node(Node* crawler, int target) { // Makes the same result as below
 	}
 	// If target was found
 	if (target == crawler->data) {
-		// If the node has only one child or no child
-		if (crawler->left != NULL) {
+		if (crawler->left != NULL) { // If the node has a left child
 			Node* temp = crawler->left; // Store the right child of target node to substitute the target node with it
 			delete crawler;
 			return temp;
 		}
-		else if (crawler->right != NULL) { // Same process as right above
+		else { // If the node has a right child or no child
 			Node* temp = crawler->right;
 			delete crawler;
 			return temp;
