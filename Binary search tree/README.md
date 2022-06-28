@@ -71,7 +71,7 @@ Node* minNode(Node* node) {
 	return crawler;
 }
 
-Node* delete_node(Node* crawler, int target) { // Does the same function as below
+Node* delete_node(Node* crawler, int target) { // Makes the same result as below
 	if (crawler == NULL) {
 		cout << "Not found\n";
 		return crawler; // To prevent read violation and trash address, instead put NULL address
@@ -104,7 +104,7 @@ Node* delete_node(Node* crawler, int target) { // Does the same function as belo
 	return crawler; // In order not to put a trash address to other nodes that have been visited.
 }
 
-void delete_node2(Node* crawler, int target) { // Does the same function as above but longer code
+void delete_node2(Node* crawler, int target) { // Makes the same result as above but longer code
 	Node* prev = crawler;
 	bool prev_left = false;
 	while (crawler != NULL) {
