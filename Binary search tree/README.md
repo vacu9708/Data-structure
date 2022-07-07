@@ -8,6 +8,9 @@
 
 ![image](https://user-images.githubusercontent.com/67142421/176267897-54f6b683-1030-4394-b91e-57225fd1f85c.png)
 
+## Worst case
+When the elements that are stored are [1,2,3,4,5,6]. -> **O(n)**
+
 ~~~C++
 #include <iostream>
 using namespace std;
