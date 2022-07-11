@@ -42,7 +42,7 @@ void heapify(int parent) { // Function to max-heapify the tree
 void insert(int new_num) { // Function to insert an element into the tree
     int tree_size = heap_tree.size();
     heap_tree.push_back(new_num);
-    for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
+    for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify from the parent of last element
         heapify(i);
 }
 
