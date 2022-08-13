@@ -1,5 +1,5 @@
 # Queue
->A queue is an abstract data type that holds an ordered, linear sequence of items. In contrast to a stack, a queue is a **first in, first out (FIFO)** structure.
+>A queue holds a linear sequence of elements where the element inserted at the first, is the first element to come out, i.e. a queue is based on **First In, First Out (FIFO)** principle.
 
 ![image-91](https://user-images.githubusercontent.com/67142421/148844843-6b484f8d-87a2-4657-bdce-d7589ec942d7.png)
 
