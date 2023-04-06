@@ -7,6 +7,7 @@ A data structure is a specialized format for storing and retrieving data
 
 * [Stack](https://github.com/vacu9708/Data-structure/tree/main/Stack.md)
 * [Queue](https://github.com/vacu9708/Data-structure/tree/main/Queue.md)
+* [Deque](https://github.com/vacu9708/Data-structure/blob/main/deque.md)
 * [Linked list](https://github.com/vacu9708/Data-structure/tree/main/Linked%20list)
 * [Priority queue](https://github.com/vacu9708/Data-structure/tree/main/Priority%20queue)
 * [Binary search tree](https://github.com/vacu9708/Data-structure/tree/main/Binary%20search%20tree)
