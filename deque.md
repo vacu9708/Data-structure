@@ -5,9 +5,8 @@ A deque (short for "double-ended queue") is a mix of a queue and a stack, as it 
 
 ~~~python
 class Node:
-    def __init__(self, left, right, data):
-        self.left=left
-        self.right=right
+    def __init__(self, data):
+        self.left=self.right=None
         self.data=data
 
 class Deque:
@@ -16,18 +15,22 @@ class Deque:
 
     def push_right(self, data):
         if not self.head:
-            self.head=Node(None, None, data)
+            self.head=Node(data)
             self.tail=self.head
             return
-        self.tail.right=Node(self.tail, None, data)
+        node=Node(data)
+        self.tail.right=node
+        node.left=self.tail
         self.tail=self.tail.right
 
     def push_left(self, data):
         if not self.head:
-            self.head=Node(None, None, data)
+            self.head=Node(data)
             self.tail=self.head
             return
-        self.head.left=Node(None, self.head, data)
+        node=Node(data)
+        self.head.left=node
+        node.right=self.head
         self.head=self.head.left
 
     def pop_right(self):
