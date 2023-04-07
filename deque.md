@@ -18,6 +18,7 @@ class Deque:
         if not self.head:
             self.head=Node(None, None, data)
             self.tail=self.head
+            return
         self.tail.right=Node(self.tail, None, data)
         self.tail=self.tail.right
 
@@ -25,6 +26,7 @@ class Deque:
         if not self.head:
             self.head=Node(None, None, data)
             self.tail=self.head
+            return
         self.head.left=Node(None, self.head, data)
         self.head=self.head.left
 
