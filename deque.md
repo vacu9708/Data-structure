@@ -36,12 +36,12 @@ class Deque:
     def pop_right(self):
         data=self.tail.data
         self.tail=self.tail.left
-        del self.tail.right
+        self.tail.right=None
         return data
 
     def pop_left(self):
         data=self.head.data
         self.head=self.head.right
-        del self.head.left
+        self.head.left=None
         return data
 ~~~
