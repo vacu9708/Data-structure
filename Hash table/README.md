@@ -5,7 +5,7 @@
 ## The characteristic of Hash table
 >Each key is mapped to a specific index by a *hash function* in the array and its value stored in that location unless a *hash collision* occurs. Because of this, insertion, search and delete operations are performed in constant time **O(1)**.
 
-![473px-Hash_table_3_1_1_0_1_0_0_SP svg](https://user-images.githubusercontent.com/67142421/148845486-a0a5ecbe-ddfb-4660-983b-781dee2fcf82.png)
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/570dbc4a-2a46-4f9b-b46d-c31a783a7006)
 
 ## Hash collision
 > There is a possibility that two keys result in the same value. The situation where a newly inserted key maps to an already occupied slot in the hash table is called *collision* and must be handled using some collision handling technique. 
