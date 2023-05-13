@@ -25,7 +25,7 @@ using namespace std;
 void heapify(vector<int>& heap_tree, int parent) {
     int left = 2 * parent + 1, right = 2 * parent + 2; // children
     int tree_size = heap_tree.size();
-    // If child is larger than parent, swap parent and child
+    // Compre parent and its children
     if (left < tree_size && heap_tree[left] < heap_tree[parent]) { // becomes max_heapify by changing the inequality sign
         swap(heap_tree[left], heap_tree[parent]);
         heapify(heap_tree, left);
