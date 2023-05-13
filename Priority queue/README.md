@@ -22,56 +22,38 @@
 #include <vector>
 using namespace std;
 
-vector<int> heap_tree;
-
-void heapify(int parent) { // Function to max-heapify the tree
+void heapify(vector<int>& heap_tree, int parent) {
     int left = 2 * parent + 1, right = 2 * parent + 2;
     int tree_size = heap_tree.size();
     // If child is larger than parent, swap parent and child
-    if (left < tree_size && heap_tree[left] > heap_tree[parent]) { // Changing the inequality sign makes it min-heapify
+    if (left < tree_size && heap_tree[left] < heap_tree[parent]) { // becomes max_heapify by changing the inequality 
         swap(heap_tree[left], heap_tree[parent]);
-        heapify(left);
+        heapify(heap_tree, left);
     }
-    if (right < tree_size && heap_tree[right] > heap_tree[parent]) {
+    if (right < tree_size && heap_tree[right] < heap_tree[parent]) {
         swap(heap_tree[right], heap_tree[parent]);
-        heapify(right);
+        heapify(heap_tree, right);
     }
 }
 
 
-void insert(int new_num) { // Function to insert an element into the tree
+void heap_push(vector<int>& heap_tree, int new_num) {
     int tree_size = heap_tree.size();
     heap_tree.push_back(new_num);
-    for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify from the parent of the last element
-        heapify(i);
+    for (int i = tree_size / 2 - 1; i >= 0; i--) // min_heapify from the parent of the last element
+        heapify(heap_tree, i);
 }
 
-int get(vector<int>& heap_tree) {
-    int tree_size = heap_tree.size();
+int heap_pop(vector<int>& heap_tree) {
     int highest_priority = heap_tree[0];
-
-    // Put the last element of heap tree into the first index
     int tree_size = heap_tree.size();
+    // Move the the last node to the place to be deleted
     heap_tree[0] = heap_tree[tree_size - 1];
     heap_tree.pop_back();
-    //-----
-    for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
-        heapify(i);
+    // heapify
+    for (int i = tree_size / 2 - 1; i >= 0; i--)
+        heapify(heap_tree, i);
     return highest_priority;
-}
-
-void deleteNode(vector<int>& heap_tree, int target) { // Function to delete an element from the tree
-    int tree_size = heap_tree.size();
-    for (int i = 0; i < tree_size; i++)
-        if (heap_tree[i] == target) { // If target was found
-            printf("Delete (%d)\n", target);
-            heap_tree[i] = heap_tree[tree_size - 1]; // Change it to the last node
-            heap_tree.pop_back(); // Delete the last node
-            for (int i = tree_size / 2 - 1; i >= 0; i--) // Max-heapify
-                heapify(i);
-            return;
-        }
-    printf("Target (%d) not found\n", target);
 }
 
 void print_array(vector<int>& heap_tree) {
@@ -82,20 +64,17 @@ void print_array(vector<int>& heap_tree) {
 }
 
 int main() {
-    for (int i = 1; i <= 9; i += 2)
-        insert(i);
+    vector<int> heap_tree;
+    for (int i = 9; i > 0; i--)
+        heap_push(heap_tree, i);
     printf("Heap tree : "); print_array(heap_tree);
 
-    deleteNode(heap_tree, 7);
-    printf("Heap tree : "); print_array(heap_tree);
-
-    printf("Get (%d)\n", get(heap_tree));
+    printf("Get (%d)\n", heap_pop(heap_tree));
     printf("Heap tree : "); print_array(heap_tree);
 }
 ~~~
 ## Output
-![Untitled](https://user-images.githubusercontent.com/67142421/148804359-b3bc1e37-6b7a-44ba-ae3c-5ac311296b27.png)
-
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/d142e6e6-9a2a-498d-b23d-df6a5ca902a9)
 
 ## Priority queue using linked list
 ~~~C++
