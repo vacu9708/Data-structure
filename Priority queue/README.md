@@ -30,25 +30,29 @@ void print_array(vector<int>& heap_tree) {
 }
 
 
-void heapify(vector<int>& heap_tree, int parent) {
-    int left = 2 * parent + 1, right = 2 * parent + 2;
+void min_heapify(vector<int>& heap_tree, int parent) {
+    int left = 2*parent + 1, right = 2*parent + 2;
     int least = parent;
     // If child is larger than parent, swap parent and child
-    if (left < heap_tree.size() && heap_tree[left] < heap_tree[parent]) // becomes max_heapify by changing the inequality 
+    if (left < heap_tree.size() && heap_tree[left] < heap_tree[least]) // becomes max_heapify by changing the inequality 
         least=left;
-    if (right < heap_tree.size() && heap_tree[right] < heap_tree[parent])
+    if (right < heap_tree.size() && heap_tree[right] < heap_tree[least])
         least=right;
     if (least != parent) {
         swap(heap_tree[least], heap_tree[parent]);
-        heapify(heap_tree, least);
+        min_heapify(heap_tree, least);
     }
 }
 
+void heapify(vector<int>& heap_tree){
+    // heap_tree.size() / 2 - 1 means the last parent
+    for (int i = heap_tree.size() / 2 - 1; i >= 0; i--)
+        min_heapify(heap_tree, i);
+}
 
 void heap_push(vector<int>& heap_tree, int data) {
     heap_tree.push_back(data);
-    for (int i = heap_tree.size() / 2 - 1; i >= 0; i--)
-        heapify(heap_tree, i);
+    heapify(heap_tree);
 }
 
 int heap_pop(vector<int>& heap_tree) {
@@ -56,20 +60,19 @@ int heap_pop(vector<int>& heap_tree) {
     // Move the the last node to the place to be deleted
     heap_tree[0] = heap_tree[heap_tree.size() - 1];
     heap_tree.pop_back();
-    // heapify
-    for (int i = heap_tree.size() / 2 - 1; i >= 0; i--)
-        heapify(heap_tree, i);
+    heapify(heap_tree);
     return highest_priority;
 }
 
 int main() {
     vector<int> heap_tree;
-    for (int i = 9; i > 0; i--)
+    for (int i = 5; i > 0; i--)
         heap_push(heap_tree, i);
     printf("Heap tree : "); print_array(heap_tree);
-
-    printf("Get (%d)\n", heap_pop(heap_tree));
-    printf("Heap tree : "); print_array(heap_tree);
+    for(int i=0; i<5; i++){
+        printf("Get (%d)\n", heap_pop(heap_tree));
+        printf("Heap tree : "); print_array(heap_tree);
+    }
 }
 ~~~
 ## Output
