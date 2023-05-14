@@ -4,7 +4,7 @@
 >The element with the highest priority is always at the beginning of the queue.
 >Normally ***Heap*** is used to implement a priority queue.
 
-## An example of Min heap
+## Example of Min heap
 ![Min-heap](https://user-images.githubusercontent.com/67142421/149667051-b130801a-328e-4656-9b11-3e5cb98bf787.png)
 
 ## Why is heap used instead of linked list to implement priority queue?
