@@ -29,30 +29,35 @@ void print_array(vector<int>& heap_tree) {
     cout << "\n";
 }
 
-
-void min_heapify(vector<int>& heap_tree, int parent) {
-    int left = 2*parent + 1, right = 2*parent + 2;
-    int least = parent;
+void heapify(vector<int>& heap_tree, int curr) {
+    int left = curr*2+1, right = curr*2+1; // children
+    int least = curr;
     // If child is larger than parent, swap parent and child
     if (left < heap_tree.size() && heap_tree[left] < heap_tree[least]) // becomes max_heapify by changing the inequality 
         least=left;
     if (right < heap_tree.size() && heap_tree[right] < heap_tree[least])
         least=right;
-    if (least != parent) {
-        swap(heap_tree[least], heap_tree[parent]);
-        min_heapify(heap_tree, least);
+    if (least != curr) {
+        swap(heap_tree[least], heap_tree[curr]);
+        heapify(heap_tree, least);
     }
 }
 
-void heapify(vector<int>& heap_tree){
-    // heap_tree.size() / 2 - 1 means the last parent
-    for (int i = heap_tree.size() / 2 - 1; i >= 0; i--)
-        min_heapify(heap_tree, i);
+void heapify_all(vector<int>& heap_tree){
+    for (int i = (heap_tree.size()-1)/2; i >= 0; i--) // from last child's parent
+        heapify(heap_tree, i);
+}
+
+void upward_heapify(vector<int>& heap_tree, int curr){
+    int parent=(curr-1)/2;
+    if(!(curr>=1 || heap_tree[curr]<heap_tree[parent])) return;
+    swap(heap_tree[curr], heap_tree[parent]);
+    upward_heapify(heap_tree, parent);
 }
 
 void heap_push(vector<int>& heap_tree, int data) {
     heap_tree.push_back(data);
-    heapify(heap_tree);
+    upward_heapify(heap_tree, heap_tree.size() - 1);
 }
 
 int heap_pop(vector<int>& heap_tree) {
@@ -60,7 +65,7 @@ int heap_pop(vector<int>& heap_tree) {
     // Move the the last node to the place to be deleted
     heap_tree[0] = heap_tree[heap_tree.size() - 1];
     heap_tree.pop_back();
-    heapify(heap_tree);
+    heapify(heap_tree, 0);
     return highest_priority;
 }
 
