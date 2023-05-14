@@ -30,7 +30,7 @@ void print_array(vector<int>& heap_tree) {
 }
 
 void heapify(vector<int>& heap_tree, int curr) {
-    int left = curr*2+1, right = curr*2+1; // children
+    int left = curr*2+1, right = curr*2+2; // children
     int least = curr;
     // If child is larger than parent, swap parent and child
     if (left < heap_tree.size() && heap_tree[left] < heap_tree[least]) // becomes max_heapify by changing the inequality 
