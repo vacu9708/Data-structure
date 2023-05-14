@@ -44,7 +44,7 @@ void heapify(vector<int>& heap_tree, int curr) {
 }
 
 void heapify_all(vector<int>& heap_tree){
-    for (int i = (heap_tree.size()-1)/2; i >= 0; i--) // from last child's parent
+    for (int i = (heap_tree.size()-2)/2; i >= 0; i--) // from last child's parent
         heapify(heap_tree, i);
 }
 
