@@ -17,7 +17,7 @@
 >As stated above, priority queue using heap is more stable than linked list in terms of time complexity while priority queue using linked list is unstable.
 
 ## Caution
-Before heapifying, the array must be transformed into a heap tree by lifting up elements with higher priority, which takes O(NlogN)<br>
+Before heapifying, the array must first be transformed into a heap tree by lifting up elements with higher priority, which takes O(NlogN)<br>
 
 ## Priority queue using heap
 ~~~C++
