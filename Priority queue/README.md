@@ -1,6 +1,6 @@
 # Priority queue
 >A priority queue is a collection of data elements similar to a regular queue in which an element with the highest priority leaves first.<br>
->Elements with a higher priority are placed before their children<br>
+>Elements with higher priority are placed before their children<br>
 >The element with the highest priority is always at the beginning of the queue.
 >Normally ***Heap*** is used to implement a priority queue.
 
@@ -17,7 +17,7 @@
 >As stated above, priority queue using heap is more stable than linked list in terms of time complexity while priority queue using linked list is unstable.
 
 ## Caution
-Before heapifying, the array must be a heap tree by lifting up elements with a higher priority, which takes O(NlogN)<br>
+Before heapifying, the array must be transformed into a heap tree by lifting up elements with higher priority, which takes O(NlogN)<br>
 
 ## Priority queue using heap
 ~~~C++
