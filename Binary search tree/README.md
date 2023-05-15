@@ -35,7 +35,7 @@ Node* insert(Node* node, int data) {
 
 	if (data < node->data) // If new node is smaller than parent, go to the left child
 		node->left = insert(node->left, data);
-	else // If not, go to the right child
+	else if (data > node->data) // If not, go to the right child
 		node->right = insert(node->right, data);
 	return node; // In order not to return a trash address to other nodes that have been visited.
 }
