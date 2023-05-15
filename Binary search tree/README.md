@@ -30,7 +30,7 @@ Node* new_node(int data) {
 }
 
 Node* insert(Node* node, int data) {
-	if (node == NULL) // When a node doesn't exist in the current address, create a node.
+	if (node == NULL)
 		return new_node(data);
 
 	if (data < node->data) // If new node is smaller than parent, go to the left child
