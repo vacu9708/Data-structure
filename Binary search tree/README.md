@@ -5,7 +5,7 @@ It can be used to search for data in **O(log(n))** time, which is faster than li
 ## How to delete a node that has 2 children in Binary Search tree
 >When deleting a node that has no child or only one child, all that has to be done is put the child of the deleted node to the deleted node. But deleting a node that has 2 children is more complicated.<br>
 
-Place the maximum of the left subtree in the node to be deleted to satisfy BST's condition
+Replace the node to be deleted with the max value in the left subtree and delete the max node to satisfy BST's condition
 
 ![image](https://user-images.githubusercontent.com/67142421/176267897-54f6b683-1030-4394-b91e-57225fd1f85c.png)
 
@@ -68,11 +68,10 @@ void insert_without_recursion(int data) {
 		//-----
 }
 
-Node* findMinNode(Node* node) {
+Node* find_max_node(Node* node) {
     Node* current = node;
-    while (current->left) {
-        current = current->left;
-    }
+    while (current->right)
+        current = current->right;
     return current;
 }
 
@@ -94,9 +93,9 @@ Node* delete_node(Node* curr, int target) {
             delete curr;
             return temp;
         } else { // Has 2 children
-            Node* temp = findMinNode(curr->right);
-            curr->data = temp->data;
-            curr->right = delete_node(curr->right, temp->data);
+            Node* max_node = find_max_node(curr->left);
+            curr->data = max_node->data;
+            curr->left = delete_node(curr->left, max_node->data);
         }
     }
     return curr;
