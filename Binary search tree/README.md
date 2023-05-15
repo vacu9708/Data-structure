@@ -3,8 +3,9 @@ Binary search tree is a used for fast lookups where the left child of a parent i
 It can be used to search for data in **O(log(n))** time, which is faster than linear search that takes **O(n)**, but slower than the corresponding operations on hash tables.
 
 ## How to delete a node that has 2 children in Binary Search tree
->When deleting a node that has no child or only one child, all that has to be done is delete and put the address of the child of the deleted node to the deleted node's parent. But deleting a node that has 2 children is more complicated. <br>
-* **How to delete it** : Place either the minimum of the right subtree or the maximum of the left subtree in the position of the node to be deleted
+>When deleting a node that has no child or only one child, all that has to be done is put the child of the deleted node to the deleted node. But deleting a node that has 2 children is more complicated.<br>
+
+Place the maximum of the left subtree in the node to be deleted to satisfy BST's condition
 
 ![image](https://user-images.githubusercontent.com/67142421/176267897-54f6b683-1030-4394-b91e-57225fd1f85c.png)
 
@@ -67,87 +68,38 @@ void insert_without_recursion(int data) {
 		//-----
 }
 
-Node* minNode(Node* node) {
-	Node* crawler = node;
-	while (crawler && crawler->left != NULL) // Find the leftmost leaf to get to the minimum node
-		crawler = crawler->left;
-	return crawler;
+Node* findMinNode(Node* node) {
+    Node* current = node;
+    while (current->left) {
+        current = current->left;
+    }
+    return current;
 }
 
-Node* delete_node(Node* crawler, int target) { // Makes the same result as below
-	if (crawler == NULL) {
-		cout << "Not found\n";
-		return crawler; // To prevent read violation and trash address, instead put NULL address
-	}
-	// If target was found
-	if (target == crawler->data) {
-		if (crawler->left != NULL) { // If the node has a left child
-			Node* temp = crawler->left; // Store the right child of target node to substitute the target node with it
-			delete crawler;
-			return temp;
-		}
-		else { // If the node has a right child or no child
-			Node* temp = crawler->right;
-			delete crawler;
-			return temp;
-		}
-		//-----
-		// Else if the target has two children
-		Node* temp = minNode(crawler->right); // Find the minimum of right subtree
-		crawler->data = temp->data; // Place the minimum of right subtree in the position of the node to be deleted
-		crawler->right = delete_node(crawler->right, temp->data); // Delete the minimum of right subtree
-		//-----
-	}
-	//-----
-	else if (target < crawler->data) // If target is smaller than parent, go to left child to find the target
-		crawler->left = delete_node(crawler->left, target);
-	else // Else, same process as right above
-		crawler->right = delete_node(crawler->right, target);
-	return crawler; // In order not to put a trash address to other nodes that have been visited.
-}
+Node* delete_node(Node* curr, int target) {
+    if (curr == nullptr)
+        return root;
 
-void delete_node2(Node* crawler, int target) { // Makes the same result as above but longer code
-	Node* prev = crawler;
-	bool prev_left = false;
-	while (crawler != NULL) {
-		if (target == crawler->data) { // If target was found
-			// If the node is with only one child or no child
-			if (crawler->left == NULL) {
-				Node* temp = crawler->right; // Store the right child of target node to substitute the target node with it
-				delete crawler;
-				prev_left == true ? prev->left = temp : prev->right = temp;
-				return;
-			}
-			else if (crawler->right == NULL) { // Same process as right above
-				Node* temp = crawler->left;
-				delete crawler;
-				prev_left == true ? prev->left = temp : prev->right = temp;
-				return;
-			}
-			//-----
-			// If the node has two children
-			Node* temp = minNode(crawler->right); // Find the minimum of right subtree
-			crawler->data = temp->data; // Place the minimum of right subtree in the position of the node to be deleted
-			delete_node2(crawler->right, temp->data);
-			return;
-			//-----
-		}
-		// If target is smaller than parent, go to left child to find the target
-		else if (target < crawler->data) {
-			prev = crawler;
-			crawler = crawler->left;
-			prev_left = true;
-		}
-		//-----
-		// Else, the same process as right above
-		else {
-			prev = crawler;
-			crawler = crawler->right;
-			prev_left = false;
-		}
-		//-----
-	}
-	cout << "Not found\n";
+    if (target < curr->data) {
+        curr->left = delete_node(curr->left, target);
+    } else if (target > curr->data) {
+        curr->right = delete_node(curr->right, target);
+    } else { // Found the target
+        if (curr->left == nullptr) { // Just move the child
+            Node* temp = curr->right;
+            delete curr;
+            return temp;
+        } else if (curr->right == nullptr) { // Just move the child
+            Node* temp = curr->left;
+            delete curr;
+            return temp;
+        } else { // Has 2 children
+            Node* temp = findMinNode(curr->right);
+            curr->data = temp->data;
+            curr->right = delete_node(curr->right, temp->data);
+        }
+    }
+    return curr;
 }
 
 // In order traversal (ascending order)
