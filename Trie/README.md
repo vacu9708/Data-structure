@@ -7,7 +7,7 @@
 ### Examples of this data structure.
 - auto-complete algorithms used in cellphones, search engines, and so on.
 
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/6c83680b-6aae-4f8b-9232-3da01c6fcfb8)
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/899a14a6-bb1b-49ef-9715-6f5f290ab526)
 
 ## However
 >Trie takes a lot of memory space in exchange for the fast speed because each node has 26 pointers. It's a good example of time-space trade-off.
