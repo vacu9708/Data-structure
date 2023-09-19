@@ -5,9 +5,9 @@
 >in **O(n)** time very fast.
 
 ### Examples of this data structure.
-* auto-complete algorithms used in cellphones, search engines, and so on.
+- auto-complete algorithms used in cellphones, search engines, and so on.
 
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/6100da9a-d115-4cc4-a8aa-0f0e6911b360)
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/6c83680b-6aae-4f8b-9232-3da01c6fcfb8)
 
 ## However
 >Trie takes a lot of memory space in exchange for the fast speed because each node has 26 pointers. It's a good example of time-space trade-off.
