@@ -8,11 +8,11 @@ A linked list is a collection of elements, called nodes, where each node consist
 A collection of data elements that is stored contiguously and consecutively.
   * Memory is allocated during the compile time (Static memory allocation), so the size of the array must be specified at the time of array declaration.
   * Elements can be accessed randomly. The wanted index is just picked immedately, in other words, **O(1) time complexity**
-  * Insertion and Deletion operations are costlier since the memory locations are consecutive and fixed. **O(n) time complexity** because in the worst case, all the elements 	 might have to be pushed back.
+  * Insertion and Deletion operations are costlier since the memory locations are consecutive and fixed. **O(n) time complexity** because in the worst case, all the elements might have to be pushed back.
 
 #### `Linked list`
 A collection of data elements stored non-contiguously, with each element connected through pointers.
-  * Elements can't be accessed randomly. They have to be accessed sequentially in order. **O(n) time complexity** in the worst case which is going through the list to access the last element sequentially.
+  * Elements can't be accessed randomly. They have to be accessed sequentially in order. **O(n) time complexity** to go through the list to access the last element sequentially.
   * Insertion and Deletion operations are fast since a new node can be connected to the list anywhere in memory and a node can be easily deleted by just changing the link using pointers. **O(1) time complexity**
 
 ~~~C++
