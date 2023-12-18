@@ -40,8 +40,7 @@ public:
 			return;
 		}
 
-		Node* prev_front = front;
-		front = new Node(data, prev_front);
+		front = new Node(data, front);
 	}
 
 	void push_back(int data) {
