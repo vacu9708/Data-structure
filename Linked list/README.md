@@ -1,5 +1,5 @@
 # Linked list
->A linked list is a linear container of data elements whose order is not given by their physical placement in memory unlike *Array*
+A linked list is a collection of elements, called nodes, where each node consists of two parts: data and a reference (or link) to the next node in the sequence. Linked lists are used to store and organize data, and they are particularly useful when you need dynamic data storage that can grow or shrink during program execution.
 
 ![1_m11VTAK3YJgRemmfBI_2uw](https://user-images.githubusercontent.com/67142421/148844977-d81a8d5a-4cbc-4ed4-b4bc-5a2254f72203.png)
 
