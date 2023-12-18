@@ -9,8 +9,8 @@
 
 ## Why is heap used instead of linked list to implement priority queue?
 * **Heap**
-  * heap_push() : **O(logn)** [Heapifying takes **O(logn)**]
-  * heap_pop(): **O(logn)** [Heapifying takes **O(logn)**]
+  * heap_push() : **O(logn)** [Upward-heapifying takes **O(logn)** as it is the reverse process of the binary search]
+  * heap_pop(): **O(logn)** [Downward-heapifying takes **O(logn)** in the same way as the binary search]
 * **Linked list**
   * insert() : **O(n)** [It takes **O(n)** to compare the priority of all the elements before inserting)]
   * get() : **O(1)** [Because all that needs to be done is just get the front data]
@@ -32,28 +32,30 @@ void print_array(vector<int>& heap_tree) {
     cout << "\n";
 }
 
-void heapify(vector<int>& heap_tree, int curr) {
+void downward_heapify(vector<int>& heap_tree, int curr) {
     int left = curr*2+1, right = curr*2+2; // children
     int least = curr;
-    // If child is larger than parent, swap parent and child
+    // If a child is smaller than its parent, swap them
     if (left < heap_tree.size() && heap_tree[left] < heap_tree[least]) // becomes max_heapify by changing the inequality 
         least=left;
     if (right < heap_tree.size() && heap_tree[right] < heap_tree[least])
         least=right;
     if (least != curr) {
         swap(heap_tree[least], heap_tree[curr]);
-        heapify(heap_tree, least);
+        downward_heapify(heap_tree, least);
     }
 }
 
-void heapify_all(vector<int>& heap_tree){
-    for (int i = (heap_tree.size()-2)/2; i >= 0; i--) // from last child's parent
-        heapify(heap_tree, i);
-}
+// void heapify_all(vector<int>& heap_tree){
+//     for (int i = (heap_tree.size()-2)/2; i >= 0; i--) // from last child's parent
+//         downward_heapify(heap_tree, i);
+// }
 
 void upward_heapify(vector<int>& heap_tree, int curr){
     int parent=(curr-1)/2;
-    if(!(curr>=1 || heap_tree[curr]<heap_tree[parent])) return;
+    // Return if out of range or the parent is smaller than the current node
+    if(!(curr>=1 || heap_tree[curr]<heap_tree[parent]))
+        return;
     swap(heap_tree[curr], heap_tree[parent]);
     upward_heapify(heap_tree, parent);
 }
@@ -65,10 +67,10 @@ void heap_push(vector<int>& heap_tree, int data) {
 
 int heap_pop(vector<int>& heap_tree) {
     int highest_priority = heap_tree[0];
-    // Move the the last node to the place to be deleted
+    // Move the the last node to the place to be deleted for a better time complexity in the vector
     heap_tree[0] = heap_tree[heap_tree.size() - 1];
     heap_tree.pop_back();
-    heapify(heap_tree, 0);
+    downward_heapify(heap_tree, 0);
     return highest_priority;
 }
 
