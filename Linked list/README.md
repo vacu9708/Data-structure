@@ -7,7 +7,7 @@ A linked list is a collection of elements, called nodes, where each node consist
 #### `Array`
 A collection of data elements that is stored contiguously and consecutively.
   * Elements can be accessed randomly. The wanted index is just picked immedately, in other words, **O(1) time complexity**
-  * Insertion and Deletion operations are costlier since the memory locations are consecutive and fixed. **O(n) time complexity** because in the worst case, all the elements might have to be moved to prevent internal fragmentation.
+  * Insertion and Deletion operations are costlier since the memory locations are consecutive and fixed. **O(n) time complexity** because in the worst case, all the elements might have to be moved to prevent internal and external fragmentation.
 
 #### `Linked list`
 A collection of data elements stored non-contiguously, with each element connected through pointers.
