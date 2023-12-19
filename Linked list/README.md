@@ -12,7 +12,7 @@ A collection of data elements that is stored contiguously and consecutively.
 #### `Linked list`
 A collection of data elements stored non-contiguously, with each element connected through pointers.
   * Elements are stored non-contiguously and can't be accessed randomly. They have to be accessed sequentially in order. **O(n) time complexity** to go through the list to access the last element sequentially.
-  * Insertion and Deletion operations are fast since a new node can be connected to the list anywhere in memory and a node can be easily deleted by just changing pointers. **O(1) time complexity**
+  * Insertion and Deletion operations are fast since inserting or deleting a new node just requires creating or deleting a link respectively, which is **O(1) time complexity** operation.
   * Additional memory is consumed beause nodes have pointers
 
 ~~~C++
