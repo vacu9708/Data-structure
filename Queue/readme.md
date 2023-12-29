@@ -61,7 +61,7 @@ void main() {
 ~~~C++
 #include <stdio.h>
 
-const char QUEUE_LENGTH = 4; // The real size is 3
+const char QUEUE_LENGTH = 4; // The real size is 3 to distinguish between empty and full
 
 int queue[QUEUE_LENGTH];
 int front = 0, rear = 0;
