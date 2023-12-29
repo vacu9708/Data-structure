@@ -71,8 +71,8 @@ void put(int data) {
 		printf("The queue is full\n");
 	else {
 		printf("Put (%d)\n", data);
-        rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 		queue[rear] = data;
+        rear = (rear + 1) % QUEUE_LENGTH; // If it's the last index, go back to index 0, if not, index++
 	}
 }
 
@@ -82,8 +82,9 @@ int get() {
         return -1;
     }
 	else {
-        front = (front + 1) % QUEUE_LENGTH;
-		return queue[front];
+        int data = queue[front];
+		front = (front + 1) % QUEUE_LENGTH;
+		return data;
 	}
 }
 
@@ -95,7 +96,6 @@ int main() {
 
 	for (int i = 0; i < 4; i++)
 		printf("Get(%d)\n",get());
-    return 1;
 }
 ~~~
 ## Output
