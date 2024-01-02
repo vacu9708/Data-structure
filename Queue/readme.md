@@ -82,7 +82,7 @@ int get() {
         return -1;
     }
 	else {
-        int data = queue[front];
+        	int data = queue[front];
 		front = (front + 1) % QUEUE_LENGTH;
 		return data;
 	}
