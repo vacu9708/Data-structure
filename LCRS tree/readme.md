@@ -135,3 +135,8 @@ void LCRS_PrintTree( LCRSNode* Node, int Depth )
         LCRS_PrintTree( Node->RightSibling, Depth );
 }
 ~~~
+## Result
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/8781d876-c663-490c-9639-d452e730963b)
+
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/4b945bde-e532-489c-8bd7-b5dcc739c597)
+
