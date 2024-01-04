@@ -173,8 +173,10 @@ double ET_Evaluate(ETNode* Tree)
 }
 ~~~
 
-Expression<br>
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/5918033f-671e-41ee-a3c1-b417bb198b3c)
+### Expression
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/5918033f-671e-41ee-a3c1-b417bb198b3c)<br>
+- `Infix`: (7*1) / (5-2)
+- `Postfix`: 71*52-/" 
 
-Result<br>
+### Result
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/7733c742-2667-4a53-b5f2-acd7abe9df9e)
