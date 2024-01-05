@@ -270,3 +270,4 @@ int main(void)
     return 0;
 }
 ~~~
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/a7fc7237-4103-46a3-b0c3-1115a8188fa4)
