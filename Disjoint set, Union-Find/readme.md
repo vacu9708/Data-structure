@@ -49,6 +49,7 @@ void DS_DestroySet(DisjointSet* Set)
 }
 ~~~
 ### Test_DisjointSet.c
+~~~c++
 #include <stdio.h>
 #include "DisjointSet.h"
 
