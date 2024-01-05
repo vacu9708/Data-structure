@@ -192,4 +192,4 @@ double ET_Evaluate(ETNode* Tree)
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/946dfdd2-92ad-4095-9a8f-d6ef922c4c80)
 
 ### Result
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/00946630-f3d1-4ee7-9718-8a2b58d05781)
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/8d9be7de-a9fa-4049-85b7-a04dd9467bec)
