@@ -64,9 +64,11 @@ int main(void){
     DS_UnionSet(Set1, Set2);
     printf("Set1 == Set2 : %d\n", DS_FindSet(Set1) == DS_FindSet(Set2));
 
+    DS_UnionSet(Set2, Set3);
     DS_UnionSet(Set3, Set4);
-    printf("Set3 == Set4 : %d\n", DS_FindSet(Set3) == DS_FindSet(Set4));
+    printf("Set2 == Set4 : %d\n", DS_FindSet(Set2) == DS_FindSet(Set4));
 }
+~~~
 
 ### Result
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/10fefce2-cb62-433a-95ca-6b17986263f5)
