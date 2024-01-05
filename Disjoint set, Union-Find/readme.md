@@ -23,7 +23,7 @@ void DS_DestroySet(DisjointSet *Set);
 ~~~c++
 #include "DisjointSet.h"
 
-void DS_UnionSet(DisjointSet* Set1, DisjointSet* Set2) // Return the parent of the set
+void DS_UnionSet(DisjointSet* Set1, DisjointSet* Set2) //  Set the new parent of the set
 {
     Set2 = DS_FindSet(Set2);
     Set2->Parent = Set1;
