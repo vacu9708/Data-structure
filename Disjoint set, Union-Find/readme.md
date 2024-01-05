@@ -18,8 +18,9 @@ DisjointSet *DS_MakeSet(void *NewData);
 void DS_DestroySet(DisjointSet *Set);
 
 #endif
-~~~c++
+~~~
 ### DisjointSet.c
+~~~c++
 #include "DisjointSet.h"
 
 void DS_UnionSet(DisjointSet* Set1, DisjointSet* Set2)
