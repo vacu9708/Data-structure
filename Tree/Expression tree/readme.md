@@ -13,6 +13,7 @@ int main(void)
     ETNode* Root = NULL;
 
     char PostfixExpression[20] = "71*52-/";
+    //char PostfixExpression[20] = "23*456-*+";
     ET_BuildExpressionTree(PostfixExpression, &Root);
 
     printf("Preorder...\n");
