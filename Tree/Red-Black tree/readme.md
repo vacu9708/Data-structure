@@ -18,9 +18,9 @@ The cases during insertion are:
 - **Case 2**: The new node's parent is black.
     - **Action**: No action needed, as the tree remains valid.
 - **Case 3**: The new node's parent and uncle are red.
-    - **Action**:: Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent.
+    - **Action**: Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent.
 - **Case 4**: The new node's parent is red but the uncle is black; the new node is added to the right of the left child or to the left of the right child (the "triangle" configuration).
-    - **Action**:: Perform a rotation (left or right, respectively) on the parent, transforming the case into Case 5.
+    - **Action**: Perform a rotation (left or right, respectively) on the parent, transforming the case into Case 5.
 - **Case 5**: The new node's parent is red but the uncle is black; the new node is added to the left of the left child or to the right of the right child (the "line" configuration).
     - **Action**: Perform a rotation on the grandparent (right or left, respectively), swap the colors of the grandparent and parent, and recheck the tree.
 ## Cases During Deletion
