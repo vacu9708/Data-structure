@@ -17,7 +17,7 @@ When a new node is inserted, it is initially colored red. This can lead to a vio
     - **Action**: Color the node black to satisfy the root property.
 - **Case 2**: The new node's parent is black.
     - **Action**: No action needed, as the tree remains valid.
-- **:Case 3**:: The new node's parent and uncle are red.
+- **Case 3**:: The new node's parent and uncle are red.
     - **Action**:: Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent.
 - **Case 4**:: The new node's parent is red but the uncle is black; the new node is added to the right of the left child or to the left of the right child (the "triangle" configuration).
     - **Action**:: Perform a rotation (left or right, respectively) on the parent, transforming the case into Case 5.
