@@ -164,7 +164,6 @@ class RedBlackTree:
             x.parent.left = y
         y.right = x
         x.parent = y
-    # ... [Previous code from the first half]
 
     def delete_node(self, data):
         self.delete_node_helper(self.root, data)
