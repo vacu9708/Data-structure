@@ -1,6 +1,6 @@
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/16adefa5-7b05-496b-8912-0b266ace2d3f)
-
-A red-black tree stays balanced with operations like insertion, deletion, and search in O(log n) time complexity,
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/16adefa5-7b05-496b-8912-0b266ace2d3f)<br>
+A Red-Black Tree is a type of self-balancing binary search tree.<br>
+It stays balanced with operations like insertion, deletion, and search in O(log n) time complexity.
 
 ## Red black tree properties
 The properties that must be preserved are:
