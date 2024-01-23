@@ -34,6 +34,10 @@ Deletion can be more complex due to the need to replace the deleted node and pot
 - **Case 4**: The sibling is black and its right child is red.
     - **Action**: Perform a rotation on the parent, recolor the sibling and the right child, and recheck the tree.
 
+## Rotation
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/34f8effe-96d8-47f2-a190-31d6a3d40a92)<br>
+Rotations are used to maintain the tree's balanced structure.
+
 ~~~python
 class Node:
     def __init__(self, data, color="RED"):
