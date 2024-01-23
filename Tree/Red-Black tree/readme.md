@@ -11,7 +11,7 @@ The properties that must be preserved are:
 - **Black Depth Property**: Every path from a node to its descendant NIL nodes has the same number of black nodes.
 
 ## Cases During Insertion
-When a new node is inserted, it is initially colored red. This can lead to a violation of the Red-Black Tree properties, particularly the Red Node Property.<br>
+When a new node is inserted, it is initially colored `red`. This can lead to a violation of the Red-Black Tree properties, particularly the Red Node Property.<br>
 The cases during insertion are:
 - **Case 1**: The new node is at the root of the tree.
     - **Action**: Color the node black to satisfy the root property.
