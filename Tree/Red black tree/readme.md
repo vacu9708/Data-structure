@@ -1,3 +1,10 @@
+The properties that must be preserved are:
+- **Node Color**: Every node is either red or black.
+- **Root Property**: The root of the tree is always black.
+- **Leaf Property**: Every leaf (NIL node) is black.
+- **Red Node Property**: Red nodes cannot have red children (i.e., no two red nodes can be adjacent).
+- **Black Depth Property**: Every path from a node to its descendant NIL nodes has the same number of black nodes.
+
 ~~~python
 class Node:
     def __init__(self, data, color="RED"):
