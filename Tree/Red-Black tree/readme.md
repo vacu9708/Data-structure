@@ -97,17 +97,14 @@ class RedBlackTree:
             if k.parent == k.parent.parent.right:
                 u = k.parent.parent.left  # uncle
                 if u.color == "RED":
-                    # case 3.1
                     u.color = "BLACK"
                     k.parent.color = "BLACK"
                     k.parent.parent.color = "RED"
                     k = k.parent.parent
                 else:
                     if k == k.parent.left:
-                        # case 3.2.2
                         k = k.parent
                         self.right_rotate(k)
-                    # case 3.2.1
                     k.parent.color = "BLACK"
                     k.parent.parent.color = "RED"
                     self.left_rotate(k.parent.parent)
@@ -116,17 +113,17 @@ class RedBlackTree:
                 u = k.parent.parent.right
 
                 if u.color == "RED":
-                    # mirror case 3.1
+                    # mirror case
                     u.color = "BLACK"
                     k.parent.color = "BLACK"
                     k.parent.parent.color = "RED"
                     k = k.parent.parent
                 else:
                     if k == k.parent.right:
-                        # mirror case 3.2.2
+                        # mirror case
                         k = k.parent
                         self.left_rotate(k)
-                    # mirror case 3.2.1
+                    # mirror case
                     k.parent.color = "BLACK"
                     k.parent.parent.color = "RED"
                     self.right_rotate(k.parent.parent)
@@ -165,6 +162,7 @@ class RedBlackTree:
             x.parent.left = y
         y.right = x
         x.parent = y
+
 
     def delete_node(self, data):
         self.delete_node_helper(self.root, data)
