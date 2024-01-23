@@ -35,8 +35,10 @@ Deletion can be more complex due to the need to replace the deleted node and pot
     - **Action**: Perform a rotation on the parent, recolor the sibling and the right child, and recheck the tree.
 
 ## Rotation
+Rotations are used to maintain the tree's balanced structure.<br>
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/34f8effe-96d8-47f2-a190-31d6a3d40a92)<br>
-Rotations are used to maintain the tree's balanced structure.
+A right rotation converts the tree above into the tree below
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)
 
 ~~~python
 class Node:
