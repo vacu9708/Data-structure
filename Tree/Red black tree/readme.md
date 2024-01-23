@@ -1,3 +1,5 @@
+A red-black tree stays balanced with operations like insertion, deletion, and search in O(log n) time complexity,
+
 ## Red black tree properties
 The properties that must be preserved are:
 - **Node Color**: Every node is either red or black.
