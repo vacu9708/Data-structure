@@ -302,3 +302,5 @@ if __name__ == "__main__":
 ~~~
 ### Result
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/1345e8da-e365-4d29-8874-735edb1efdf8)
+
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/1b10b4d3-61ec-410d-a278-93d541a9ae9d)
