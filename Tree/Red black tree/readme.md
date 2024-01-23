@@ -264,4 +264,5 @@ if __name__ == "__main__":
     rbt.delete_node(40)
     rbt.print_tree()
 ~~~
+### Result
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/1345e8da-e365-4d29-8874-735edb1efdf8)
