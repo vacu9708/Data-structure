@@ -18,22 +18,24 @@ The cases during insertion are:
 - **Case 2**: The new node's parent is black.
     - **Fix**: No action needed, as the tree remains valid.
 - **Case 3**: The new node's parent and uncle are red.
-    - **Fix**: **(Recoloring)**Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent. The grandparent may now violate properties, so the process continues recursively on the grandparent.
-- **Case 4**: The new node's parent is red but the uncle is black. This case is split into two subcases depending on if the new node is a left or right child.
-    - **Fix**: **(Recoloring and rotation)**Perform a rotation (left or right, respectively) on the parent, transforming the case into Case 5.
-- **Case 5**: The new node's parent is red but the uncle is black.
-    - **Fix**: Perform a rotation on the grandparent (right or left, respectively), swap the colors of the grandparent and parent, and recheck the tree.
+    - **Fix**: **(Recoloring)** Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent. The grandparent may now violate properties, so the process continues recursively on the grandparent.
+- **Case 4**: The new node's parent is red, but the uncle is black, and the new node is an inner child (left child of a right parent or right child of a left parent).
+    - **Fix**: **(Recoloring and rotation)** Perform a rotation on the parent to make the new node an outer child, and then proceed to Case 5.
+- **Case 5**: The new node's parent is red, but the uncle is black, and the new node is an outer child (right child of a right parent or left child of a left parent).
+    - **Fix**: Perform a rotation on the grandparent, swap the colors of the parent and grandparent, and update pointers accordingly.
 ## Cases During Deletion
 Deletion can be more complex due to the need to replace the deleted node and potentially rebalance the tree.<br>
 The cases during deletion are:
-- **Case 1**: The sibling of the node being fixed is red.
-    - **Fix**: Recolor the sibling and the parent, and perform a rotation on the parent.
-- **Case 2**: The sibling and its children are black.
-    - **Fix**: Recolor the sibling and move the problem up the tree by rechecking the tree starting from the parent.
-- **Case 3**: The sibling is black, its left child is red, and its right child is black.
-    - **Fix**: Recolor the sibling and its left child, and perform a rotation on the sibling. This transforms the case into Case 4.
-- **Case 4**: The sibling is black and its right child is red.
-    - **Fix**: Perform a rotation on the parent, recolor the sibling and the right child, and recheck the tree.
+- **Case 1**: The node to fix (initially the replacement node) is the new root.
+    - **Fix**: No action needed. The deletion is complete.
+- **Case 2**: The sibling of the node to fix is red.
+    - **Fix**: Rotate at the parent. Swap the colors of the parent and the sibling. This transforms the tree into one of the other cases.
+- **Case 3**: The sibling and both nephews (children of the sibling) are black.
+    - **Fix**: Repaint the sibling red. Move the fixing node pointer to the parent, effectively moving up the tree to continue fixing.
+- **Case 4**: The sibling is black with a red nephew on the far side (opposite the fixing node).
+    - **Fix**: Rotate at the sibling. Swap the colors of the parent and the sibling. Repaint the far nephew black. This restores balance and completes the deletion.
+- **Case 5**: The sibling is black with a red nephew on the near side (same side as the fixing node).
+    - **Fix**: Rotate at the near nephew (the sibling's child). Swap the colors of the sibling and its child. This transforms the tree into Case 4.
 
 ## Rotation
 Rotations are used to maintain the tree's balanced structure.<br>
