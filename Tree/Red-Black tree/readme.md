@@ -10,6 +10,12 @@ The properties that must be preserved are:
 - **Red Node Property**: Red nodes cannot have red children (i.e., no two red nodes can be adjacent).
 - **Black Depth Property**: Every path from a node to its descendant NIL nodes has the same number of black nodes.
 
+## Rotation
+Rotations are used to maintain the tree's balanced structure.<br>
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/34f8effe-96d8-47f2-a190-31d6a3d40a92)<br>
+A right rotation converts the tree above into the tree below.(left rotation is its opposite)<br>
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)
+
 ## Cases During Insertion
 When a new node is inserted, it is initially colored `red`. This can lead to a violation of the Red-Black Tree properties, particularly the Red Node Property.<br>
 The cases during insertion are:
@@ -36,12 +42,6 @@ The cases during deletion are:
     - **Fix**: Rotate at the sibling. Swap the colors of the parent and the sibling. Repaint the far nephew black. This restores balance and completes the deletion.
 - **Case 5**: The sibling is black with a red nephew on the near side (same side as the fixing node).
     - **Fix**: Rotate at the near nephew (the sibling's child). Swap the colors of the sibling and its child. This transforms the tree into Case 4.
-
-## Rotation
-Rotations are used to maintain the tree's balanced structure.<br>
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/34f8effe-96d8-47f2-a190-31d6a3d40a92)<br>
-A right rotation converts the tree above into the tree below.(left rotation is its opposite)<br>
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)
 
 ~~~python
 class Node:
