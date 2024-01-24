@@ -24,9 +24,9 @@ The cases during insertion are:
 - **Case 2**: The new node's parent is black.
     - **Fix**: No action needed, as the tree remains valid.
 - **Case 3**: The new node's parent and uncle are red.
-    - **Fix**: **(Recoloring)** Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent. The grandparent may now violate properties, so the process continues recursively on the grandparent.
+    - **Fix**: Color both the parent and the uncle black and the grandparent red. Then, recheck the tree starting from the grandparent. The grandparent may now violate properties, so the process continues recursively on the grandparent.
 - **Case 4**: The new node's parent is red, but the uncle is black, and the new node is an inner child (left child of a right parent or right child of a left parent).
-    - **Fix**: **(Recoloring and rotation)** Perform a rotation on the parent to make the new node an outer child, and then proceed to Case 5.
+    - **Fix**: Perform a rotation on the parent to make the new node an outer child, and then proceed to Case 5.
 - **Case 5**: The new node's parent is red, but the uncle is black, and the new node is an outer child (right child of a right parent or left child of a left parent).
     - **Fix**: Perform a rotation on the grandparent, swap the colors of the parent and grandparent, and update pointers accordingly.
 ## Cases During Deletion
