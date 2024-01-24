@@ -6,7 +6,7 @@ It stays balanced with operations like insertion, deletion, and search in O(log 
 The properties that must be preserved are:
 - **Node Color**: Every node is either red or black.
 - **Root Property**: The root of the tree is always black.
-- **Leaf Property**: Every leaf (NIL node) is black.
+- **Leaf Property**: Every leaf (NIL node) is black. (null in the real code)
 - **Red Node Property**: Red nodes cannot have red children (i.e., no two red nodes can be adjacent).
 - **Black Depth Property**: Every path from a node to its descendant NIL nodes has the same number of black nodes.
 
