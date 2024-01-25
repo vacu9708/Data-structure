@@ -15,7 +15,9 @@ Rotations are used to maintain the tree's balanced structure.<br>
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/ecf1d132-7622-4550-992b-041d730f91cd)<br>
 A is the new node.<br>
 A right rotation converts the tree above into the tree below.(left rotation is its opposite)<br>
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)<br>
+### My opinion
+In my opinion, the rotation is performed so that the unbalanced branch can have an opportunity to grow in the other branch 
 
 ## Cases During Insertion
 When a new node is inserted, it is initially colored `red`. This can lead to a violation of the Red-Black Tree properties, particularly the Red Node Property.<br>
