@@ -4,11 +4,11 @@ It stays balanced with operations like insertion, deletion, and search in O(log 
 
 ## Red black tree properties
 The properties that must be preserved are:
-- **Node Color**: Every node is either red or black.
-- **Root Property**: The root of the tree is always black.
-- **Leaf Property**: Every leaf (NIL node) is black. (null in the real code)
-- **Red Node Property**: Red nodes cannot have red children (i.e., no two red nodes can be adjacent).
-- **Black Depth Property**: Every path from a node to its descendant NIL nodes has the same number of black nodes.
+1. **Node Color**: Every node is either red or black.
+2. **Root Property**: The root of the tree is always black.
+3. **Leaf Property**: Every leaf (NIL node) is black. (null in the real code)
+4. **Red Node Property**: Red nodes cannot have red children (i.e., no two red nodes can be adjacent).
+5. **Black Depth Property**: Every path from a node to its descendant NIL nodes has the same number of black nodes.
 
 ## Rotation
 Rotations are used to maintain the tree's balanced structure.<br>
@@ -32,7 +32,10 @@ The cases during insertion are:
     - **Fix**: Perform a rotation on the parent to make the new node an outer child(The new node becomes the parent of its former parent.), and then proceed to Case 5.
 - **Case 5**: The new node's parent is red, but the uncle is black, and the new node is an outer child (right child of a right parent or left child of a left parent).
     - **Fix**: Perform a rotation on the grandparent, swap the colors of the parent and grandparent, and update pointers accordingly.
+
 ## Cases During Deletion
+- Deleting a red node results in nothing to violate any of the rules.
+- Deleting a black node results in violating the rule 4 and 5.
 ### Case 1: Sibling of the Double Black Node is Red
 In this scenario, the sibling of the double black node is red. The parent and the sibling's children are typically black.
 
