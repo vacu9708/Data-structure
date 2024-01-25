@@ -1,4 +1,4 @@
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/16adefa5-7b05-496b-8912-0b266ace2d3f)<br>
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/c10efe14-17a4-4474-8e9d-75da031c89d0)![image](https://github.com/vacu9708/Data-structure/assets/67142421/16adefa5-7b05-496b-8912-0b266ace2d3f)<br>
 A Red-Black Tree is a type of self-balancing binary search tree.<br>
 It stays balanced with operations like insertion, deletion, and search in O(log n) time complexity.
 
@@ -12,7 +12,8 @@ The properties that must be preserved are:
 
 ## Rotation
 Rotations are used to maintain the tree's balanced structure.<br>
-![image](https://github.com/vacu9708/Data-structure/assets/67142421/34f8effe-96d8-47f2-a190-31d6a3d40a92)<br>
+![image](https://github.com/vacu9708/Data-structure/assets/67142421/ecf1d132-7622-4550-992b-041d730f91cd)<br>
+A is the new node.<br>
 A right rotation converts the tree above into the tree below.(left rotation is its opposite)<br>
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)
 
