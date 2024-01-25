@@ -5,7 +5,7 @@ It can be used to search for data in **O(log(n))** time, which is faster than li
 ## How to delete a node that has 2 children in Binary Search tree
 - **Deleting a node that has no child**: Just delete it.
 - **Deleting a node that has one child**: put the child of the deleted node to the deleted node.
-- **Deleting a node that has 2 children**: Replace the deleted node with the node with the max value in its left subtree.(or the min node in the right subtree)
+- **Deleting a node that has 2 children**: Replace the deleted node with the max node in its left subtree.(or the min node in the right subtree)
 
 ![image](https://user-images.githubusercontent.com/67142421/176267897-54f6b683-1030-4394-b91e-57225fd1f85c.png)
 
