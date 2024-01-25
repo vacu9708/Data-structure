@@ -13,7 +13,7 @@ The properties that must be preserved are:
 ## Rotation
 Rotations are used to maintain the tree's balanced structure.<br>
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/ecf1d132-7622-4550-992b-041d730f91cd)<br>
-A is the new node.<br>
+A is the new node. in insertion<br>
 A right rotation converts the tree above into the tree below.(left rotation is its opposite)<br>
 ![image](https://github.com/vacu9708/Data-structure/assets/67142421/7cf6dbe4-06a6-42a5-8bbb-b63753bed403)<br>
 ### My opinion
