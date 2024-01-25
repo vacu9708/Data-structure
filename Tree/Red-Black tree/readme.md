@@ -40,7 +40,7 @@ The cases during insertion are:
 In this scenario, the sibling of the double black node is red. The parent and the sibling's children are typically black.
 
 **Solution:**
-1. **Recolor:** Swap the colors of the parent and the sibling.
+1. **Recolor:** Swap the colors of the parent and the sibling. (parent becomes red, sibling becomes black)
 2. **Rotate:** Perform a rotation around the parent in the opposite direction of the sibling (left rotation if the sibling is on the right, right rotation if the sibling is on the left).
 
 After this operation, the double black node will have a black sibling, and we proceed to the other cases for further adjustments.
