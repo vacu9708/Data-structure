@@ -33,18 +33,40 @@ The cases during insertion are:
 - **Case 5**: The new node's parent is red, but the uncle is black, and the new node is an outer child (right child of a right parent or left child of a left parent).
     - **Fix**: Perform a rotation on the grandparent, swap the colors of the parent and grandparent, and update pointers accordingly.
 ## Cases During Deletion
-Deletion can be more complex due to the need to replace the deleted node and potentially rebalance the tree.<br>
-The cases during deletion are:
-- **Case 1**: The node to fix (initially the replacement node) is the new root.
-    - **Fix**: No action needed. The deletion is complete.
-- **Case 2**: The sibling of the node to fix is red.
-    - **Fix**: Rotate at the parent. Swap the colors of the parent and the sibling. This transforms the tree into one of the other cases.
-- **Case 3**: The sibling and both nephews (children of the sibling) are black.
-    - **Fix**: Repaint the sibling red. Move the fixing node pointer to the parent, effectively moving up the tree to continue fixing.
-- **Case 4**: The sibling is black with a red nephew on the far side (opposite the fixing node).
-    - **Fix**: Rotate at the sibling. Swap the colors of the parent and the sibling. Repaint the far nephew black. This restores balance and completes the deletion.
-- **Case 5**: The sibling is black with a red nephew on the near side (same side as the fixing node).
-    - **Fix**: Rotate at the near nephew (the sibling's child). Swap the colors of the sibling and its child. This transforms the tree into Case 4.
+### Case 1: Sibling of the Double Black Node is Red
+In this scenario, the sibling of the double black node is red. The parent and the sibling's children are typically black.
+
+**Solution:**
+1. **Rotate:** Perform a rotation around the parent in the opposite direction of the sibling (left rotation if the sibling is on the right, right rotation if the sibling is on the left).
+2. **Recolor:** Swap the colors of the parent and the sibling.
+
+After this operation, the double black node will have a black sibling, and we proceed to the other cases for further adjustments.
+
+### Case 2: Sibling is Black and Both of Sibling's Children are Black
+Here, the sibling of the double black node is black, and so are both of its children.
+
+**Solution:**
+1. **Recolor the Sibling:** Change the sibling's color from black to red.
+2. **Move Up the Tree:** Consider the parent as the new double black node. If the parent is red, turn it black, resolving the double black situation. If the parent is black, further adjustments are necessary, repeating the process with the parent as the new double black node.
+
+### Case 3: Sibling is Black, Left Child is Red, Right Child is Black
+In this case, the sibling is black, its left child is red, and its right child is black.
+
+**Solution:**
+1. **Rotate the Sibling:** Perform a right rotation on the sibling. This action makes the red left child of the sibling the new sibling.
+2. **Recolor:** Exchange the colors of the new sibling and the original sibling (the parent of the new sibling).
+
+This adjustment changes the tree structure to a configuration that falls under Case 4.
+
+### Case 4: Sibling is Black, and its Right Child is Red
+In this final case, the sibling is black, and its right child is red.
+
+**Solution:**
+1. **Rotate the Parent:** Conduct a rotation around the parent in the direction of the double black node (left rotation if the double black node is on the left, right rotation if it is on the right).
+2. **Recolor:** Swap the colors of the parent and the old sibling. Change the color of the sibling's right child (which was red) to black.
+
+This operation resolves the double black problem by balancing the black height across the tree.
+
 
 ~~~python
 class Node:
