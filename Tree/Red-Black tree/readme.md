@@ -37,8 +37,8 @@ The cases during insertion are:
 In this scenario, the sibling of the double black node is red. The parent and the sibling's children are typically black.
 
 **Solution:**
-1. **Rotate:** Perform a rotation around the parent in the opposite direction of the sibling (left rotation if the sibling is on the right, right rotation if the sibling is on the left).
-2. **Recolor:** Swap the colors of the parent and the sibling.
+1. **Recolor:** Swap the colors of the parent and the sibling.
+2. **Rotate:** Perform a rotation around the parent in the opposite direction of the sibling (left rotation if the sibling is on the right, right rotation if the sibling is on the left).
 
 After this operation, the double black node will have a black sibling, and we proceed to the other cases for further adjustments.
 
@@ -53,8 +53,8 @@ Here, the sibling of the double black node is black, and so are both of its chil
 In this case, the sibling is black, its left child is red, and its right child is black.
 
 **Solution:**
-1. **Rotate the Sibling:** Perform a right rotation on the sibling. This action makes the red left child of the sibling the new sibling.
-2. **Recolor:** Exchange the colors of the new sibling and the original sibling (the parent of the new sibling).
+1. **Recolor:** Exchange the colors of the new sibling and the original sibling (the parent of the new sibling).
+2. **Rotate the Sibling:** Perform a right rotation on the sibling. This action makes the red left child of the sibling the new sibling.
 
 This adjustment changes the tree structure to a configuration that falls under Case 4.
 
@@ -62,8 +62,8 @@ This adjustment changes the tree structure to a configuration that falls under C
 In this final case, the sibling is black, and its right child is red.
 
 **Solution:**
-1. **Rotate the Parent:** Conduct a rotation around the parent in the direction of the double black node (left rotation if the double black node is on the left, right rotation if it is on the right).
-2. **Recolor:** Swap the colors of the parent and the old sibling. Change the color of the sibling's right child (which was red) to black.
+1. **Recolor:** Swap the colors of the parent and the old sibling. Change the color of the sibling's right child (which was red) to black.
+2. **Rotate the Parent:** Conduct a rotation around the parent in the direction of the double black node (left rotation if the double black node is on the left, right rotation if it is on the right).
 
 This operation resolves the double black problem by balancing the black height across the tree.
 
