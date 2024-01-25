@@ -2,7 +2,7 @@
 Binary search tree is a used for fast lookups where the left child of a parent is smaller than the parent and the right child is bigger than the parent.<br>
 It can be used to search for data in **O(log(n))** time, which is faster than linear search that takes **O(n)**, but slower than the corresponding operations on hash tables.
 
-## How to delete a node that has 2 children in Binary Search tree
+## Node deletion
 - **Deleting a node that has no child**: Just delete it.
 - **Deleting a node that has one child**: put the child of the deleted node to the deleted node.
 - **Deleting a node that has 2 children**: Replace the deleted node with the max node in its left subtree. (or the min node in the right subtree)<br>
