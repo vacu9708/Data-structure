@@ -1,4 +1,4 @@
-- [LRU Cache](https://github.com/vacu9708/Algorithm/blob/main/Algorithm%20traning/Leetcode/medium/LRU%20Cache.md)
+- [LRU Cache](https://github.com/vacu9708/Algorithm/blob/main/Algorithm%20traning/Leetcode/medium/LRU%20Cache)
 
 A data structure is a specialized storage for organizing data.
 
